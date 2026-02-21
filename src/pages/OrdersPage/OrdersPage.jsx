@@ -1,6 +1,6 @@
-import styles from './Orders.module.scss';
+import styles from './OrdersPage.module.scss';
 
-const Orders = () => {
+const OrdersPage = () => {
   return (<section>
     <div className={styles.root}>
       <h1>Orders</h1>
@@ -8,3 +8,5 @@ const Orders = () => {
 
   </section>)
 }
+
+export default OrdersPage

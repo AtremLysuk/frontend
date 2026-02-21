@@ -3,10 +3,12 @@ import styles from "./GroupsPage.module.scss";
 
 
 
-export default function GroupsPage() {
+function GroupsPage() {
 	return (
 		<div className={clsx(styles.root)}>
 
 		</div>
 	);
 }
+
+export default GroupsPage

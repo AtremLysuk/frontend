@@ -1,1 +1,1 @@
-export { default as index } from "./index";
+export {default } from "./ProductsPage.jsx";

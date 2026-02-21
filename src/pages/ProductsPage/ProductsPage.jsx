@@ -1,14 +1,14 @@
 import clsx from "clsx";
 import styles from "./ProductsPage.module.scss";
 
-type Props = {
-  className?: string;
-};
 
-export default function ProductsPage({ className }: Props) {
+
+function ProductsPage() {
   return (
-    <div className={clsx(styles.root, className)}>
-      
+    <div className={clsx(styles.root)}>
+
     </div>
   );
 }
+
+export default ProductsPage

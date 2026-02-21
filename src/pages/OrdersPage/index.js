@@ -1,1 +1,1 @@
-export {defaul as Orders} from './Orders.jsx'
+export { default  } from "./OrdersPage.jsx";
