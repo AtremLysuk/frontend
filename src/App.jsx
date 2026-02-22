@@ -28,8 +28,11 @@ function App() {
         path="groups"
         element={<GroupsPage />}
       />
-      <Route path='' element={<div>404 Page Not Found </div>} />
-      
+      <Route
+        path=''
+        element={<div>404 Page Not Found </div>}
+      />
+
     </Route>
   </Routes>);
 }
