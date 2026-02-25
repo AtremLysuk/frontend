@@ -1,8 +1,9 @@
 import {Route, Routes} from "react-router-dom";
 import {Layout} from "./components/Layout/index.js";
 import OrdersPage from "./pages/OrdersPage";
-import GroupsPage from "./pages/GroupsPage";
 import ProductsPage from "./pages/ProductsPage";
+import GroupsPage from "./pages/GroupsPage/GroupsPage.jsx";
+import NotFoudPage from "./pages/NotFoudPage/NotFoudPage.jsx";
 
 function App() {
   return (<Routes>
@@ -20,17 +21,18 @@ function App() {
       />
 
       <Route
+        path='groups'
+        element={<GroupsPage />}
+      />
+
+      <Route
         path="products"
         element={<ProductsPage />}
       />
 
       <Route
-        path="groups"
-        element={<GroupsPage />}
-      />
-      <Route
-        path=''
-        element={<div>404 Page Not Found </div>}
+        path='*'
+        element={<NotFoudPage />}
       />
 
     </Route>

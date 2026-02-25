@@ -1,14 +1,13 @@
-import clsx from "clsx";
-import styles from "./GroupsPage.module.scss";
 
 
+const GroupsPage = () => {
 
-function GroupsPage() {
-	return (
-		<div className={clsx(styles.root)}>
+  return(
+    <section>
+      <h1>This is groups page</h1>
 
-		</div>
-	);
+    </section>
+  )
 }
 
 export default GroupsPage

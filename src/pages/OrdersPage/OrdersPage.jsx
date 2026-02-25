@@ -1,13 +1,14 @@
 import styles from './OrdersPage.module.scss';
-import { AiFillPlusCircle } from "react-icons/ai";
+import {AiFillPlusCircle} from "react-icons/ai";
 import OrdersCard from "./components/OrderCard/OrdersCard.jsx";
 import {useState} from "react";
+import DeleteModal from "../../components/DeleteModal/DeleteModal.jsx";
 import OrderProductsPanel
   from "./components/OrderProductsPanel/OrderProductsPanel.jsx";
 
 const OrdersPage = () => {
   const [activeId, setActiveId] = useState(null)
-  const [deleteId, setDeleteId] = useState(null)
+  const [orderToDelete, setOrderToDelete] = useState(null)
   const mockOrders = [{
     id: 1,
     type: 'ПРИХОД',
@@ -49,6 +50,21 @@ const OrdersPage = () => {
     amountUAH: 13000,
     status: 'repair'
   }];
+  const handleOpenDeleteModal = (order) => {
+    setOrderToDelete((order))
+  }
+  const handleCloseDeleteModal = (order) => {
+    setOrderToDelete(null)
+  }
+  const handleConfirmeDelete = () => {
+    if (orderToDelete) {
+      console.log('Удаляем приход:', orderToDelete.id)
+      if (activeId === orderToDelete.id) {
+        setActiveId(null)
+      }
+      handleCloseDeleteModal()
+    }
+  }
   const handleOpenToggleProductsPanel = (id) => {
     setActiveId(prev => prev === id ? null : id)
   }
@@ -88,6 +104,7 @@ const OrdersPage = () => {
             variant={activeId ? 'compact' : 'full'}
             isActive={activeId === order.id}
             onProductsClick={() => handleOpenToggleProductsPanel(order.id)}
+            onDeleteClick={() => handleOpenDeleteModal(order)}
           />
         </li>)))}
       </ul>
@@ -97,6 +114,12 @@ const OrdersPage = () => {
         onClose={() => setActiveId(null)}
       />)}
     </div>
+
+    {orderToDelete && (<DeleteModal
+        order={orderToDelete}
+        onConfirm={handleConfirmeDelete}
+        onClose={handleCloseDeleteModal}
+      />)}
   </section>)
 }
 export default OrdersPage

@@ -1,0 +1,441 @@
+//.overlay {
+//  position: fixed;
+//  inset: 0;
+//  background-color: rgba(0, 0, 0, 0.35);
+//  z-index: 100;
+//}
+//
+//.modal {
+//  position: fixed;
+//  top: 50%;
+//  left: 50%;
+//  transform: translate(-50%, -50%);
+//  z-index: 101;
+//  background: #fff;
+//  border-radius: 8px;
+//  width: 560px;
+//  max-width: 90vw;
+//  overflow: hidden;
+//
+//  &__close {
+//    position: absolute;
+//    top: -14px;
+//    right: -14px;
+//    width: 28px;
+//    height: 28px;
+//    border-radius: 50%;
+//    border: var(--border);
+//    background: #fff;
+//    cursor: pointer;
+//    font-size: 16px;
+//    display: grid;
+//    place-content: center;
+//    color: var(--color-text-secondary);
+//    transition: transform 0.3s ease, color 0.3s ease;
+//
+//    &:hover {
+//      transform: scale(1.2);
+//      color: var(--color-text-primary);
+//    }
+//  }
+//
+//  &__title {
+//    font-size: 18px;
+//    font-weight: 500;
+//    color: var(--color-text-primary);
+//    margin: 0;
+//    padding: 24px 24px 16px;
+//  }
+//
+//  &__product {
+//    display: grid;
+//    grid-template-columns: 12px 56px 1fr;
+//    align-items: center;
+//    gap: 12px;
+//    padding: 16px 24px;
+//
+//    &-dot {
+//      width: 10px;
+//      height: 10px;
+//      border-radius: 50%;
+//      background-color: var(--color-green);
+//      flex-shrink: 0;
+//    }
+//
+//    &-img {
+//      width: 56px;
+//      height: 42px;
+//      display: grid;
+//      place-content: center;
+//
+//      img {
+//        max-width: 100%;
+//        max-height: 100%;
+//        object-fit: contain;
+//      }
+//    }
+//
+//    &-info {
+//      display: flex;
+//      flex-direction: column;
+//      gap: 4px;
+//    }
+//
+//    &-name {
+//      font-size: 14px;
+//      color: var(--color-text-primary);
+//      text-decoration: underline;
+//    }
+//
+//    &-sn {
+//      font-size: 12px;
+//      color: var(--color-text-secondary);
+//    }
+//  }
+//
+//  &__footer {
+//    display: flex;
+//    align-items: center;
+//    justify-content: flex-end;
+//    gap: 16px;
+//    padding: 20px 24px;
+//    background-color: var(--color-green);
+//    margin-top: 8px;
+//  }
+//
+//  &__cancel {
+//    background: transparent;
+//    border: none;
+//    cursor: pointer;
+//    font-size: 14px;
+//    font-weight: 600;
+//    letter-spacing: 0.05em;
+//    color: #fff;
+//    transition: opacity 0.2s ease;
+//
+//    &:hover {
+//      opacity: 0.7;
+//    }
+//  }
+//
+//  &__confirm {
+//    display: flex;
+//    align-items: center;
+//    gap: 8px;
+//    padding: 10px 20px;
+//    background: #fff;
+//    border: none;
+//    border-radius: 50px;
+//    cursor: pointer;
+//    font-size: 14px;
+//    font-weight: 600;
+//    letter-spacing: 0.05em;
+//    color: var(--color-green);
+//    transition: opacity 0.2s ease;
+//
+//    &:hover {
+//      opacity: 0.8;
+//    }
+//  }
+//}
+
+
+// DeleteModal.module.scss
+
+// Анимации
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px); // легкое размытие фона
+  z-index: 100;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 101;
+  background: #fff;
+  border-radius: 8px;
+  width: 560px;
+  max-width: 90vw;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out;
+  outline: none; // убираем стандартную обводку фокуса
+
+  // Фокус на модалке (для доступности)
+  &:focus {
+    outline: 2px solid var(--color-green);
+    outline-offset: 2px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 12px; // изменил с -14px на 12px, так как отрицательное значение выходило за пределы
+    right: 12px; // изменил с -14px на 12px
+    width: 32px; // увеличил для лучшего тач-таргета
+    height: 32px;
+    border-radius: 50%;
+    border: var(--border);
+    background: #fff;
+    cursor: pointer;
+    font-size: 18px; // увеличил
+    display: grid;
+    place-content: center;
+    color: var(--color-text-secondary);
+    transition: all 0.2s ease;
+    z-index: 10; // чтобы быть поверх всего
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      transform: scale(1.1) rotate(90deg); // добавил вращение
+      color: var(--color-text-primary);
+      background-color: #f5f5f5;
+      border-color: var(--color-text-primary);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    // Для доступности
+    &:focus-visible {
+      outline: 2px solid var(--color-green);
+      outline-offset: 2px;
+    }
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin: 0;
+    padding: 24px 24px 16px;
+    line-height: 1.4;
+  }
+
+  &__product {
+    display: grid;
+    grid-template-columns: 12px 56px 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    background-color: #fafafa; // легкий фон для выделения
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+
+    &-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--color-green);
+      flex-shrink: 0;
+
+      // Анимация пульсации для привлечения внимания
+      animation: pulse 2s infinite;
+    }
+
+    &-img {
+      width: 56px;
+      height: 42px;
+      display: grid;
+      place-content: center;
+      background-color: #fff;
+      border-radius: 4px;
+      padding: 4px;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        transition: transform 0.2s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &-name {
+      font-size: 14px;
+      color: var(--color-text-primary);
+      text-decoration: underline;
+      text-decoration-color: transparent; // для плавного появления при hover
+      transition: text-decoration-color 0.2s ease;
+
+      &:hover {
+        text-decoration-color: currentColor;
+      }
+    }
+
+    &-sn {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      font-family: monospace; // для SN выглядит уместно
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    padding: 20px 24px;
+    background-color: var(--color-green);
+    margin-top: 8px;
+  }
+
+  &__cancel {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #fff;
+    transition: all 0.2s ease;
+    padding: 10px 16px; // добавил паддинг для лучшего клика
+    border-radius: 4px;
+
+    &:hover {
+      opacity: 0.8;
+      background-color: rgba(255, 255, 255, 0.1); // легкий фон при наведении
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    // Для доступности
+    &:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  }
+
+  &__confirm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 24px; // увеличил горизонтальный паддинг
+    background: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--color-green);
+    transition: all 0.2s ease;
+    min-width: 120px; // минимальная ширина для консистентности
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      background-color: #f5f5f5;
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    // Для доступности
+    &:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    svg {
+      transition: transform 0.2s ease;
+    }
+
+    &:hover svg {
+      transform: scale(1.1);
+    }
+  }
+
+  // Медиа-запрос для мобильных устройств
+  @media (max-width: 768px) {
+    width: 95vw;
+
+    &__title {
+      font-size: 16px;
+      padding: 20px 16px 12px;
+    }
+
+    &__product {
+      padding: 12px 16px;
+      gap: 8px;
+
+      &-img {
+        width: 48px;
+        height: 36px;
+      }
+
+      &-name {
+        font-size: 13px;
+      }
+
+      &-sn {
+        font-size: 11px;
+      }
+    }
+
+    &__footer {
+      padding: 16px;
+    }
+
+    &__confirm {
+      padding: 8px 20px;
+      min-width: 100px;
+    }
+  }
+}
