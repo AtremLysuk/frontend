@@ -9,7 +9,7 @@ import {
   formatAmountUAH, formatAmountUSD
 } from "../../../../helpers/getConvertAmount.js";
 
-const OrdersCard = ({order, variant = 'full', onProductsClick, isActive}) => {
+const OrdersCard = ({order, variant = 'full', onProductsClick, isActive , onDeleteClick}) => {
   const isCompact = variant === 'compact'
   return (
     <article className={`bg-white ${styles.card} ${isCompact ? styles['card--compact'] : ''} ${isActive ? styles['card--active'] : ''}`}>
@@ -67,6 +67,7 @@ const OrdersCard = ({order, variant = 'full', onProductsClick, isActive}) => {
           type='button'
           className={styles['card__trash-btn']}
           aria-label={`Удалить приход ${order.id}`}
+          onClick={onDeleteClick}
         >
           <FaTrashAlt
             className={styles['card__trash-icon']}
