@@ -1,7 +1,7 @@
 import styles from './OrdersPage.module.scss';
 import {AiFillPlusCircle} from "react-icons/ai";
 import OrdersCard from "./components/OrderCard/OrdersCard.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import DeleteModal from "../../components/DeleteModal/DeleteModal.jsx";
 import OrderProductsPanel
   from "./components/OrderProductsPanel/OrderProductsPanel.jsx";
@@ -9,6 +9,7 @@ import OrderProductsPanel
 const OrdersPage = () => {
   const [activeId, setActiveId] = useState(null)
   const [orderToDelete, setOrderToDelete] = useState(null)
+  const [notFake, setNotFake] = useState([])
   const mockOrders = [{
     id: 1,
     type: 'ПРИХОД',
@@ -75,15 +76,17 @@ const OrdersPage = () => {
         throw new Error("fail fetch")
       }
       const data = await res.json()
-      return data
+      setNotFake(data)
+      // return data
     } catch (error) {
       console.log("error")
     }
   }
   const activeOrder = mockOrders.find(order => order.id === activeId)
-  // useEffect(() => {
-  //
-  // }, []);
+  useEffect(() => {
+    notFakeOrders()
+  }, []);
+  console.log(notFake)
   return (<section
     className={styles['orders']}
     aria-labelledby='orders-title'
