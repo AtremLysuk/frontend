@@ -1,148 +1,4 @@
-//.overlay {
-//  position: fixed;
-//  inset: 0;
-//  background-color: rgba(0, 0, 0, 0.35);
-//  z-index: 100;
-//}
-//
-//.modal {
-//  position: fixed;
-//  top: 50%;
-//  left: 50%;
-//  transform: translate(-50%, -50%);
-//  z-index: 101;
-//  background: #fff;
-//  border-radius: 8px;
-//  width: 560px;
-//  max-width: 90vw;
-//  overflow: hidden;
-//
-//  &__close {
-//    position: absolute;
-//    top: -14px;
-//    right: -14px;
-//    width: 28px;
-//    height: 28px;
-//    border-radius: 50%;
-//    border: var(--border);
-//    background: #fff;
-//    cursor: pointer;
-//    font-size: 16px;
-//    display: grid;
-//    place-content: center;
-//    color: var(--color-text-secondary);
-//    transition: transform 0.3s ease, color 0.3s ease;
-//
-//    &:hover {
-//      transform: scale(1.2);
-//      color: var(--color-text-primary);
-//    }
-//  }
-//
-//  &__title {
-//    font-size: 18px;
-//    font-weight: 500;
-//    color: var(--color-text-primary);
-//    margin: 0;
-//    padding: 24px 24px 16px;
-//  }
-//
-//  &__product {
-//    display: grid;
-//    grid-template-columns: 12px 56px 1fr;
-//    align-items: center;
-//    gap: 12px;
-//    padding: 16px 24px;
-//
-//    &-dot {
-//      width: 10px;
-//      height: 10px;
-//      border-radius: 50%;
-//      background-color: var(--color-green);
-//      flex-shrink: 0;
-//    }
-//
-//    &-img {
-//      width: 56px;
-//      height: 42px;
-//      display: grid;
-//      place-content: center;
-//
-//      img {
-//        max-width: 100%;
-//        max-height: 100%;
-//        object-fit: contain;
-//      }
-//    }
-//
-//    &-info {
-//      display: flex;
-//      flex-direction: column;
-//      gap: 4px;
-//    }
-//
-//    &-name {
-//      font-size: 14px;
-//      color: var(--color-text-primary);
-//      text-decoration: underline;
-//    }
-//
-//    &-sn {
-//      font-size: 12px;
-//      color: var(--color-text-secondary);
-//    }
-//  }
-//
-//  &__footer {
-//    display: flex;
-//    align-items: center;
-//    justify-content: flex-end;
-//    gap: 16px;
-//    padding: 20px 24px;
-//    background-color: var(--color-green);
-//    margin-top: 8px;
-//  }
-//
-//  &__cancel {
-//    background: transparent;
-//    border: none;
-//    cursor: pointer;
-//    font-size: 14px;
-//    font-weight: 600;
-//    letter-spacing: 0.05em;
-//    color: #fff;
-//    transition: opacity 0.2s ease;
-//
-//    &:hover {
-//      opacity: 0.7;
-//    }
-//  }
-//
-//  &__confirm {
-//    display: flex;
-//    align-items: center;
-//    gap: 8px;
-//    padding: 10px 20px;
-//    background: #fff;
-//    border: none;
-//    border-radius: 50px;
-//    cursor: pointer;
-//    font-size: 14px;
-//    font-weight: 600;
-//    letter-spacing: 0.05em;
-//    color: var(--color-green);
-//    transition: opacity 0.2s ease;
-//
-//    &:hover {
-//      opacity: 0.8;
-//    }
-//  }
-//}
 
-
-// DeleteModal.module.scss
-
-// Анимации
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -179,7 +35,7 @@
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(2px); // легкое размытие фона
+  backdrop-filter: blur(2px);
   z-index: 100;
   animation: fadeIn 0.2s ease-out;
 }
@@ -197,9 +53,9 @@
   overflow: hidden;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   animation: slideIn 0.3s ease-out;
-  outline: none; // убираем стандартную обводку фокуса
+  outline: none;
 
-  // Фокус на модалке (для доступности)
+
   &:focus {
     outline: 2px solid var(--color-green);
     outline-offset: 2px;
@@ -207,24 +63,24 @@
 
   &__close {
     position: absolute;
-    top: 12px; // изменил с -14px на 12px, так как отрицательное значение выходило за пределы
-    right: 12px; // изменил с -14px на 12px
-    width: 32px; // увеличил для лучшего тач-таргета
+    top: 12px;
+    right: 12px;
+    width: 32px;
     height: 32px;
     border-radius: 50%;
     border: var(--border);
     background: #fff;
     cursor: pointer;
-    font-size: 18px; // увеличил
+    font-size: 18px;
     display: grid;
     place-content: center;
     color: var(--color-text-secondary);
     transition: all 0.2s ease;
-    z-index: 10; // чтобы быть поверх всего
+    z-index: 10;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
     &:hover {
-      transform: scale(1.1) rotate(90deg); // добавил вращение
+      transform: scale(1.1) rotate(90deg);
       color: var(--color-text-primary);
       background-color: #f5f5f5;
       border-color: var(--color-text-primary);
@@ -234,7 +90,7 @@
       transform: scale(0.95);
     }
 
-    // Для доступности
+
     &:focus-visible {
       outline: 2px solid var(--color-green);
       outline-offset: 2px;
@@ -256,7 +112,7 @@
     align-items: center;
     gap: 12px;
     padding: 16px 24px;
-    background-color: #fafafa; // легкий фон для выделения
+    background-color: #fafafa;
     border-top: 1px solid #eaeaea;
     border-bottom: 1px solid #eaeaea;
 

@@ -14,20 +14,34 @@
     width: 28px;
     height: 28px;
     border-radius: 50%;
+    line-height: 1;
     border: var(--border);
-    background: #fff;
-    cursor: pointer;
-    font-size: 16px;
+    background-color: #fff;
+    font-size: 18px;
     display: grid;
     place-content: center;
     color: var(--color-text-secondary);
-    line-height: 1;
-    transition: transform .3s ease, color .3s ease;
+    transition: all 0.2s ease;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
     &:hover {
-      color: var(--color-success);
-      transform: scale(1.2);
+      transform: scale(1.1) rotate(90deg);
+      color: var(--color-text-primary);
+      border-color: var(--color-text-primary);
     }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+
+    &:focus-visible {
+      outline: 2px solid var(--color-success);
+      outline-offset: 2px;
+    }
+
+
   }
 
   &__header {
@@ -35,7 +49,7 @@
     flex-direction: column;
     gap: 12px;
     margin-bottom: 16px;
-    padding-right: 32px; // чтобы заголовок не перекрывал кнопку закрытия
+    padding-right: 32px;
   }
 
   &__title {

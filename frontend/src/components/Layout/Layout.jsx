@@ -1,5 +1,5 @@
 import {Outlet} from "react-router-dom";
-import NavMenu from "../NavMenu";
+import NavMenu from "../NavMenu/index.js";
 
 import styles from './Layout.module.scss'
 

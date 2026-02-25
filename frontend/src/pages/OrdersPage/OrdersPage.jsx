@@ -68,7 +68,22 @@ const OrdersPage = () => {
   const handleOpenToggleProductsPanel = (id) => {
     setActiveId(prev => prev === id ? null : id)
   }
+  const notFakeOrders = async () => {
+    try {
+      const res = await fetch('http://localhost:3001/api/orders');
+      if (!res.ok) {
+        throw new Error("fail fetch")
+      }
+      const data = await res.json()
+      return data
+    } catch (error) {
+      console.log("error")
+    }
+  }
   const activeOrder = mockOrders.find(order => order.id === activeId)
+  // useEffect(() => {
+  //
+  // }, []);
   return (<section
     className={styles['orders']}
     aria-labelledby='orders-title'
@@ -116,10 +131,10 @@ const OrdersPage = () => {
     </div>
 
     {orderToDelete && (<DeleteModal
-        order={orderToDelete}
-        onConfirm={handleConfirmeDelete}
-        onClose={handleCloseDeleteModal}
-      />)}
+      order={orderToDelete}
+      onConfirm={handleConfirmeDelete}
+      onClose={handleCloseDeleteModal}
+    />)}
   </section>)
 }
 export default OrdersPage

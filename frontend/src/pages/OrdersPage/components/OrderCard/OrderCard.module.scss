@@ -38,10 +38,17 @@
       border-radius: 50%;
       background-color: transparent;
       cursor: pointer;
+      transition: transform .3s ease, color .3s ease;
+
+      &:hover{
+        transform: scale(1.1);
+        border-color: var(--color-success);
+      }
 
       &-icon {
         font-size: 18px;
         color: var(--color-text-secondary);
+
       }
     }
 
@@ -114,7 +121,7 @@
 
     &:hover {
       .card__trash-icon {
-        color: #e53935;
+        color: var(--color-danger);
       }
     }
   }

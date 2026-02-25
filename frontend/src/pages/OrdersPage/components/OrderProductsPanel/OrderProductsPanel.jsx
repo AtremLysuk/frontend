@@ -52,7 +52,7 @@ const OrderProductsPanel = ({order, onClose}) => {
       type='button'
       aria-label='Закрыть панель продуктов'
       onClick={() => onClose()}
-    >x
+    >×
     </button>
     <header className={styles['panel__header']}>
       <h2

@@ -1,7 +1,7 @@
 import {Route, Routes} from "react-router-dom";
 import {Layout} from "./components/Layout/index.js";
-import OrdersPage from "./pages/OrdersPage";
-import ProductsPage from "./pages/ProductsPage";
+import OrdersPage from "./pages/OrdersPage/index.js";
+import ProductsPage from "./pages/ProductsPage/index.js";
 import GroupsPage from "./pages/GroupsPage/GroupsPage.jsx";
 import NotFoudPage from "./pages/NotFoudPage/NotFoudPage.jsx";
 
