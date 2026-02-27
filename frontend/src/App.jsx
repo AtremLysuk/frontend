@@ -4,6 +4,8 @@ import OrdersPage from "./pages/OrdersPage/index.js";
 import ProductsPage from "./pages/ProductsPage/index.js";
 import GroupsPage from "./pages/GroupsPage/GroupsPage.jsx";
 import NotFoudPage from "./pages/NotFoudPage/NotFoudPage.jsx";
+import UsersPage from "./pages/UsersPage/UsersPage.jsx";
+import SettingsPage from "./pages/SettingsPage/SettingsPage.jsx";
 
 function App() {
   return (<Routes>
@@ -29,6 +31,16 @@ function App() {
         path="products"
         element={<ProductsPage />}
       />
+
+      <Route
+        path='settings'
+        element={<SettingsPage />}
+      />
+      <Route
+        path='users'
+        element={<UsersPage />}
+      />
+
 
       <Route
         path='*'

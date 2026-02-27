@@ -108,7 +108,7 @@ const DeleteModal = ({order, onConfirm, onClose}) => {
               if (button) setTimeout(() => button.focus(), 100)
             }}
           >
-            <FaTrashAlt aria-hidden="true" />
+            <FaTrashAlt aria-hidden="true" color='red' />
             УДАЛИТЬ
           </button>
         </footer>

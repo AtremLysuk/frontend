@@ -1,20 +1,39 @@
+
 import styles from './OrderCard.module.scss'
 import {FaTrashAlt} from "react-icons/fa";
 import {IoList} from "react-icons/io5";
 import {MdChevronRight} from "react-icons/md";
 import {
-  getFullFormatDate, getISODate, getShortFormatDate,
+  getFullFormatDate, getShortFormatDate,
 } from "../../../../helpers/getFormatDateToIso.js";
 import {
   formatAmountUAH, formatAmountUSD
 } from "../../../../helpers/getConvertAmount.js";
 
-const OrdersCard = ({order, variant = 'full', onProductsClick, isActive , onDeleteClick}) => {
+const OrdersCard = ({
+                      order,
+                      variant = 'full',
+                      onProductsClick,
+                      isActive,
+                      onDeleteClick
+                    }) => {
   const isCompact = variant === 'compact'
+  // Преобразуем дату из формата бекенда (2024-01-15 10:00:00) в формат для отображения
+  const formatDateForDisplay = (dateString) => {
+    if (!dateString) return '06 / Апр / 2017'; // fallback
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = date.toLocaleString('ru', {month: 'short'}).replace('.', '');
+    const year = date.getFullYear();
+    return `${day} / ${month} / ${year}`;
+  };
+  const displayStartDate = formatDateForDisplay(order.date);
+  const displayEndDate = formatDateForDisplay(order.date); // используем ту же дату для endDate
   return (
     <article className={`bg-white ${styles.card} ${isCompact ? styles['card--compact'] : ''} ${isActive ? styles['card--active'] : ''}`}>
 
-      {!isCompact && (<h2 className={styles.card__title}>{order.name}</h2>)}
+      {!isCompact && (
+        <h2 className={styles.card__title}>{order.title || order.name}</h2>)}
 
       <div className={styles.card__info}>
 
@@ -31,32 +50,34 @@ const OrdersCard = ({order, variant = 'full', onProductsClick, isActive , onDele
         </button>
 
         <div className={styles['card__info-count']}>
-          <span>{order.productsCount}</span>
+          <span>{order.productsCount || 0}</span>
           <span>Продукта</span>
         </div>
 
         <div className={styles['card__info-dates']}>
           <time
             className={styles['card__info-dates-start']}
-            dateTime={getISODate(order.startDate)}
+            dateTime={order.date}
           >
-            {getShortFormatDate(order.startDate)}
+            {getShortFormatDate(displayStartDate)}
           </time>
           <time
             className={styles['card__info-dates-end']}
-            dateTime={getISODate(order.endDate)}
+            dateTime={order.date}
           >
-            {getFullFormatDate(order.endDate)}
+            {getFullFormatDate(displayEndDate)}
           </time>
         </div>
 
         {!isCompact && (<div className={styles['card__info-amount']}>
-          {order.amountUSD && <span className={styles['card__info-amount-usd']}>
-                {formatAmountUSD(order.amountUSD)}
-              </span>}
-          {order.amountUAH && <span className={styles['card__info-amount-uah']}>
-                {formatAmountUAH(order.amountUAH)}
-              </span>}
+          {order.totalUSD > 0 && (
+            <span className={styles['card__info-amount-usd']}>
+              {formatAmountUSD(order.totalUSD)}
+            </span>)}
+          {order.totalUAH > 0 && (
+            <span className={styles['card__info-amount-uah']}>
+              {formatAmountUAH(order.totalUAH)}
+            </span>)}
         </div>)}
 
         {isCompact ? (isActive && (<MdChevronRight
