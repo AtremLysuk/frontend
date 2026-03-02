@@ -2,15 +2,12 @@ import {Outlet} from "react-router-dom";
 import NavMenu from "../NavMenu/index.js";
 
 import styles from './Layout.module.scss'
+import Header from "../Header/Header.jsx";
 
 const Layout = () => {
   return (<div className="container-fluid p-0 bg-body-secondary">
 
-      <header className="sticky-top bg-white shadow-sm">
-        <div className="container-fluid py-3 shadow">
-          This is Header
-        </div>
-      </header>
+      <Header   />
 
       <div className="row g-0">
 

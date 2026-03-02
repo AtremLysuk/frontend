@@ -1,4 +1,4 @@
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import {Layout} from "./components/Layout/index.js";
 import OrdersPage from "./pages/OrdersPage/index.js";
 import ProductsPage from "./pages/ProductsPage/index.js";
@@ -15,7 +15,10 @@ function App() {
     >
       <Route
         index
-        element={<OrdersPage />}
+        element={<Navigate
+          to="/orders"
+          replace
+        />}
       />
       <Route
         path='orders'
