@@ -20,7 +20,7 @@ const OrdersCard = ({
   const isCompact = variant === 'compact'
   // Преобразуем дату из формата бекенда (2024-01-15 10:00:00) в формат для отображения
   const formatDateForDisplay = (dateString) => {
-    if (!dateString) return '06 / Апр / 2017'; // fallback
+    if (!dateString) return '-';
     const date = new Date(dateString);
     const day = String(date.getDate()).padStart(2, '0');
     const month = date.toLocaleString('ru', {month: 'short'}).replace('.', '');
@@ -28,7 +28,7 @@ const OrdersCard = ({
     return `${day} / ${month} / ${year}`;
   };
   const displayStartDate = formatDateForDisplay(order.date);
-  const displayEndDate = formatDateForDisplay(order.date); // используем ту же дату для endDate
+  const displayEndDate = formatDateForDisplay(order.date);
   return (
     <article className={`bg-white ${styles.card} ${isCompact ? styles['card--compact'] : ''} ${isActive ? styles['card--active'] : ''}`}>
 

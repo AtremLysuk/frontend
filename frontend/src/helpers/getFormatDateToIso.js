@@ -5,32 +5,69 @@ const MONTHS_TO_NUM = {
 };
 
 const MONTHS_TO_NAME = {
-  'Янв': 'Янв', 'Фев': 'Фев', 'Мар': 'Мар', 'Апр': 'Апр',
-  'Май': 'Май', 'Июн': 'Июн', 'Июл': 'Июл', 'Авг': 'Авг',
-  'Сен': 'Сен', 'Окт': 'Окт', 'Ноя': 'Ноя', 'Дек': 'Дек'
+  '01': 'Янв', '02': 'Фев', '03': 'Мар', '04': 'Апр',
+  '05': 'Май', '06': 'Июн', '07': 'Июл', '08': 'Авг',
+  '09': 'Сен', '10': 'Окт', '11': 'Ноя', '12': 'Дек'
 };
 
-const parseDate = (str) => {
+const parseISODate = (str) => {
   if (!str) return null;
-  const [day, month, year] = str.split(' / ');
-  if (!day || !month || !year) return null;
-  return { day, month, year };
+
+  const [datePart] = str.split(' ');
+  const [year, month, day] = datePart.split('-');
+
+  if (!year || !month || !day) return null;
+
+  return {
+    day: day.padStart(2, '0'),
+    month: month.padStart(2, '0'),
+    year
+  };
 };
 
 export const getShortFormatDate = (str) => {
-  const date = parseDate(str);
+  if (!str) return '—';
+
+  if (str.includes(' / ')) {
+    const [day, month] = str.split(' / ');
+    if (day && month) {
+      const monthNum = MONTHS_TO_NUM[month] || month;
+      return `${day} / ${monthNum}`;
+    }
+  }
+
+
+  const date = parseISODate(str);
   if (!date) return '—';
-  return `${date.day} / ${MONTHS_TO_NUM[date.month]}`;
+
+  return `${date.day} / ${date.month}`;
 };
 
+
 export const getFullFormatDate = (str) => {
-  const date = parseDate(str);
+  if (!str) return '—';
+
+
+  if (str.includes(' / ')) {
+    const parts = str.split(' / ');
+    if (parts.length === 3) {
+      return str;
+    }
+    if (parts.length === 2) {
+      const [day, month] = parts;
+      return `${day} / ${month} / ????`;
+    }
+  }
+
+
+  const date = parseISODate(str);
   if (!date) return '—';
+
   return `${date.day} / ${date.month} / ${date.year}`;
 };
 
 export const getISODate = (str) => {
-  const date = parseDate(str);
+  const date = parseISODate(str);
   if (!date) return '';
   return `${date.year}-${MONTHS_TO_NUM[date.month]}-${date.day}`;
 };

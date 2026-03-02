@@ -3,12 +3,9 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3001/api';
 
-// ---------- Helper function для подсчета сумм заказа ----------
 const calculateOrderTotals = (order, products = []) => {
-  // Получаем продукты только этого заказа
   const orderProducts = products.filter(p => p.orderId === order.id);
 
-  // Считаем суммы
   const totals = orderProducts.reduce((acc, product) => {
     const usdPrice = product.price?.find(p => p.symbol === 'USD')?.value || 0;
     const uahPrice = product.price?.find(p => p.symbol === 'UAH')?.value || 0;
@@ -22,21 +19,18 @@ const calculateOrderTotals = (order, products = []) => {
   return {
     ...order,
     productsCount: orderProducts.length,
-    products: orderProducts, // Добавляем продукты в заказ
+    products: orderProducts,
     totalUSD: totals.usd,
     totalUAH: totals.uah
   };
 };
 
-// ---------- Async Thunks ----------
 export const fetchOrders = createAsyncThunk(
   'orders/fetchOrders',
   async (_, { rejectWithValue }) => {
     try {
-      // Загружаем заказы
       const ordersRes = await axios.get(`${API_URL}/orders`);
 
-      // Загружаем все продукты
       const productsRes = await axios.get(`${API_URL}/products`);
 
       return {
@@ -53,13 +47,11 @@ export const fetchOrderById = createAsyncThunk(
   'orders/fetchOrderById',
   async (id, { rejectWithValue }) => {
     try {
-      // Загружаем конкретный заказ (с продуктами внутри, благодаря бекенду)
       const orderRes = await axios.get(`${API_URL}/orders/${id}`);
 
-      // Бекенд уже возвращает заказ с products
       return {
         order: orderRes.data,
-        products: orderRes.data.products || [] // Продукты уже внутри заказа
+        products: orderRes.data.products || []
       };
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Ошибка загрузки');

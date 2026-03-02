@@ -1,5 +1,4 @@
 
-
 .panel {
   position: relative;
   border: var(--border);
@@ -178,6 +177,7 @@
       font-size: 13px;
       color: var(--color-text-primary);
       text-decoration: underline;
+      text-underline-offset: 2px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;

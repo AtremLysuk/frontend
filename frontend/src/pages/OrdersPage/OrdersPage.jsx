@@ -56,7 +56,7 @@ const OrdersPage = () => {
       className={styles['orders']}
       aria-labelledby='orders-title'
     >
-      <header className={`${styles['orders__header']} bg-body-secondary`}>
+      <header className={`${styles['orders__header']} bg-body-secondary p-3  rounded`}>
         <button
           className={styles['orders__add-button']}
           aria-label="Добавить приход"
@@ -67,8 +67,8 @@ const OrdersPage = () => {
             className={styles['orders__add-icon']}
           />
         </button>
-        <h1 id="orders-title">
-          Приходы <span aria-label={`всего ${orders.length}`}>/ {orders.length}</span>
+        <h1 id="orders-title" className={styles.orders__title}>
+          Приходы <span className={styles.orders__count} aria-label={`всего ${orders.length}`}>/ {orders.length}</span>
         </h1>
       </header>
 
