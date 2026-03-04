@@ -1,0 +1,17 @@
+@use '../../scss/helpers/index' as *;
+
+.main {
+  position: relative;
+  min-height: calc(100vh - var(--header-height));
+  padding: fluid(60, 20);
+
+
+
+}
+aside{
+  position: relative;
+  -webkit-box-shadow: 5px 5px 15px 5px #000000;
+  box-shadow: 5px 5px 15px 5px #000000;
+  z-index: 70;
+}
+

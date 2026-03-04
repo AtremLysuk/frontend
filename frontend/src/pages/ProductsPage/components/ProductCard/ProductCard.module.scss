@@ -1,0 +1,219 @@
+.card {
+  display: grid;
+  grid-template-columns:
+    20px
+    40px
+    minmax(150px, 1fr)
+    50px
+    90px
+    40px
+    90px
+    minmax( 150px, 1fr)
+    50px
+    minmax( 150px, 1fr)
+    80px
+    24px;
+
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background-color: #ffffff;
+  border: 1px solid var(--color-text-secondary);
+  border-radius: 6px;
+  font-size: 13px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: #48c36b;
+  }
+
+
+  &__status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+
+      &--free {
+        background-color: var(--color-success, #48c36b);
+      }
+
+      &--repair {
+        background-color: #9e9e9e;
+      }
+    }
+  }
+
+
+  &__image {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+
+  &__info {
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    color: var(--color-text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: default;
+  }
+
+  &__sn {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    font-family: monospace;
+  }
+
+
+  &__statusText {
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+
+    &.free {
+      color: var(--color-success, #48c36b);
+    }
+
+    &.repair {
+      color: #9e9e9e;
+    }
+  }
+
+
+  &__dates {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+
+    time{
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+
+      span{
+        justify-self: flex-start;
+      }
+    }
+  }
+
+  &__condition {
+    font-size: 12px;
+    color: var(--color-text-secondary, #666);
+  }
+
+  &__datesLabel {
+    color: #aaa;
+    font-size: 11px;
+    text-align: left;
+  }
+
+
+  &__prices {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+  }
+
+  &__priceUsd {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--color-border);
+  }
+
+  &__priceUah {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__priceDefault {
+    color: var(--color-success, #48c36b);
+    font-size: 11px;
+  }
+
+
+  &__empty {
+    color: #ccc;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  &__group {
+    min-width: 0;
+    font-size: 12px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+  }
+
+  &__orderTitle {
+    min-width: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: default;
+  }
+
+  &__orderDates {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    text-align: center;
+    white-space: nowrap;
+
+    time:first-child {
+      font-size: 10px;
+    }
+  }
+
+  &__delete {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bbb;
+    padding: 4px;
+    transition: color 0.2s ease, transform 0.15s ease;
+
+    &:hover {
+      color: #e53935;
+      transform: scale(1.15);
+    }
+  }
+}

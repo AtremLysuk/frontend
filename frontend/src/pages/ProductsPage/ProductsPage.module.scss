@@ -1,0 +1,127 @@
+.products {
+  padding: 20px;
+  background-color: var(--color-bg-secondary);
+  min-height: 100vh;
+
+  &__header {
+    background-color: transparent;
+  }
+
+  &__headerInner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-text-primary, #333);
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  &__count {
+    color: var(--color-text-secondary, #999);
+  }
+
+  &__filters {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__filterGroup {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  &__filterLabel {
+    font-size: 13px;
+    color: var(--color-text-secondary, #999);
+    white-space: nowrap;
+  }
+
+  &__filter {
+    appearance: auto;
+    padding: 2px 20px 2px 6px;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--color-text-primary, #444);
+    background-color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    min-width: 80px;
+    max-width: 140px;
+    height: 26px;
+    transition: border-color 0.2s ease;
+
+    &:hover:not(:disabled) {
+      border-color: #48c36b;
+    }
+
+    &:focus {
+      border-color: #48c36b;
+      box-shadow: 0 0 0 2px rgba(72, 195, 107, 0.15);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
+
+  &__content {
+    margin-top: 20px;
+    overflow: hidden;
+  }
+
+  &__scroll-wrapper {
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-width: thin;
+    scrollbar-color: #b0b0b0 #e9ecef;
+    padding-bottom: 12px;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #e9ecef;
+      border-radius: 4px;
+      margin-top: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #b0b0b0;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: #888;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 1160px;
+    padding-bottom: 4px;
+  }
+
+  &__empty {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      margin: 0;
+      color: var(--color-text-secondary);
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "orders": [
+    {
+      "id": 1,
+      "title": "Office Equipment Supply",
+      "date": "2017-06-29T12:09:33",
+      "description": "First delivery to main office"
+    },
+    {
+      "id": 2,
+      "title": "Warehouse Electronics",
+      "date": "2018-01-15T10:20:00",
+      "description": "Electronics for warehouse"
+    },
+    {
+      "id": 3,
+      "title": "Retail Store Setup",
+      "date": "2019-03-10T09:30:00",
+      "description": "Initial store equipment"
+    }
+  ],
+
+  "products": [
+    {
+      "id": 1,
+      "serialNumber": 1234,
+      "isNew": true,
+      "photo": "/images/monitor.jpg",
+      "title": "Dell Monitor 24\"",
+      "type": "Monitors",
+      "specification": "Full HD IPS",
+      "guarantee": {
+        "start": "2017-06-29T12:09:33",
+        "end": "2019-06-29T12:09:33"
+      },
+      "price": [
+        { "value": 100, "symbol": "USD", "isDefault": false },
+        { "value": 2600, "symbol": "UAH", "isDefault": true }
+      ],
+      "orderId": 1,
+      "date": "2017-06-29T12:09:33"
+    },
+    {
+      "id": 2,
+      "serialNumber": 5678,
+      "isNew": false,
+      "photo": "/images/laptop.jpg",
+      "title": "HP Laptop ProBook",
+      "type": "Laptops",
+      "specification": "Intel i5, 16GB RAM",
+      "guarantee": {
+        "start": "2018-01-15T10:20:00",
+        "end": "2021-01-15T10:20:00"
+      },
+      "price": [
+        { "value": 900, "symbol": "USD", "isDefault": false },
+        { "value": 24000, "symbol": "UAH", "isDefault": true }
+      ],
+      "orderId": 2,
+      "date": "2018-01-15T10:20:00"
+    },
+    {
+      "id": 3,
+      "serialNumber": 9999,
+      "isNew": true,
+      "photo": "/images/printer.jpg",
+      "title": "Canon Printer X200",
+      "type": "Printers",
+      "specification": "Laser, Wi-Fi",
+      "guarantee": {
+        "start": "2019-03-10T09:30:00",
+        "end": "2022-03-10T09:30:00"
+      },
+      "price": [
+        { "value": 300, "symbol": "USD", "isDefault": false },
+        { "value": 8000, "symbol": "UAH", "isDefault": true }
+      ],
+      "orderId": 3,
+      "date": "2019-03-10T09:30:00"
+    }
+  ]
+}

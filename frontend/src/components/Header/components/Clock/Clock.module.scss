@@ -1,0 +1,52 @@
+.clock {
+  margin-left: auto;
+  display: grid;
+  padding: 0 24px;
+  gap: 2px;
+
+
+
+  &__dayName {
+    font-size: 15px;
+    font-weight: 400;
+    color: #333;
+  }
+
+  &__date {
+    font-size: 15px;
+    font-weight: 400;
+    color: #333;
+  }
+
+  &__timeBlock {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+  }
+
+  &__sessions {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    background-color: #48c36b;
+    border-radius: 8px;
+    font-size: 9px;
+    font-weight: 700;
+    color: #fff;
+    cursor: default;
+    transition: background-color 0.3s ease;
+  }
+
+  &__time {
+    font-size: 15px;
+    font-weight: 400;
+    color: #333;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+}

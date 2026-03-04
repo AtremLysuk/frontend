@@ -1,0 +1,70 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'functions' as *;
+@use 'utils' as *;
+@use 'media' as *;
+
+body {
+  @include fluid-text(18, 14);
+
+  font-family: var(--font-family-base);
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+  background-color: var(--color-dark);
+}
+
+h1 {
+  color: var(--color-heading-primary);
+}
+
+h2 {
+  color: var(--color-text-secondary);
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+h2{
+  @include fluid-text(26, 24);
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+h3{
+  @include fluid-text(22, 20);
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+
+a,
+button,
+label,
+textarea,
+select,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  color: inherit;
+
+  @include hover {
+    color: var(--color-accent-hover);
+  }
+
+  &[class] {
+    text-decoration: none;
+  }
+
+  :focus-visible {
+    outline: 10px dashed var(--color-light);
+    outline-offset: 16px;
+    transition-duration: 0s !important;
+
+  }
+
+}
