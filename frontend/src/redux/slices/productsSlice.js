@@ -43,8 +43,8 @@ export const fetchProducts = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const [productsRes, ordersRes] = await Promise.all([
-        axios.get(`${API_URL}/products`),
-        axios.get(`${API_URL}/orders`),
+        axios.get(`${API_URL}/api/products`),
+        axios.get(`${API_URL}/api/orders`),
       ]);
       return { products: productsRes.data, orders: ordersRes.data };
     } catch (error) {
@@ -57,7 +57,7 @@ export const fetchProductTypes = createAsyncThunk(
   'products/fetchProductTypes',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`${API_URL}/products/types`);
+      const { data } = await axios.get(`${API_URL}/api/products/types`);
       return data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Ошибка загрузки');
@@ -69,7 +69,7 @@ export const deleteProduct = createAsyncThunk(
   'products/deleteProduct',
   async (id, { rejectWithValue }) => {
     try {
-      await axios.delete(`${API_URL}/products/${id}`);
+      await axios.delete(`${API_URL}/api/products/${id}`);
       return id;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Ошибка удаления');
