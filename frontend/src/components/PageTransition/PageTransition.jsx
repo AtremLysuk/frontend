@@ -5,8 +5,7 @@ const PageTransition = ({children}) => {
   const container = useRef(null);
 
   useEffect(() => {
-
-    const ctx = gsap.context(() => {
+    const timer = setTimeout(() => {
       gsap.fromTo(container.current,
         {
           opacity: 0,
@@ -18,13 +17,12 @@ const PageTransition = ({children}) => {
           x: 0,
           filter: 'blur(0px)',
           duration: 0.35,
-          ease: 'power3.out',
-          delay: 0.1
+          ease: 'power3.out'
         }
       );
-    }, container);
+    }, 200);
 
-    return () => ctx.revert();
+    return () => clearTimeout(timer);
   }, []);
 
   return (
