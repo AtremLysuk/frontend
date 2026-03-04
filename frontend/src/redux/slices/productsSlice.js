@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3001/api';
 
-
 const formatGuaranteeDates = (guarantee) => {
   if (!guarantee) return null;
   const startDate = new Date(guarantee.start);
@@ -26,8 +25,7 @@ const formatPrices = (prices = []) => {
 };
 
 const enrichProduct = (product, ordersMap) => {
-  const orderKey = product.orderId ?? product.order ?? null;
-  const order = orderKey != null ? (ordersMap[orderKey] ?? null) : null;
+  const order = product.orderId != null ? (ordersMap[product.orderId] ?? null) : null;
   return {
     ...product,
     guaranteeDates: formatGuaranteeDates(product.guarantee),
@@ -39,7 +37,6 @@ const enrichProduct = (product, ordersMap) => {
 
 const applyFilter = (products, selectedType) =>
   selectedType ? products.filter(p => p.type === selectedType) : products;
-
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
@@ -60,8 +57,8 @@ export const fetchProductTypes = createAsyncThunk(
   'products/fetchProductTypes',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${API_URL}/products/types`);
-      return response.data;
+      const { data } = await axios.get(`${API_URL}/products/types`);
+      return data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Ошибка загрузки');
     }
@@ -70,19 +67,15 @@ export const fetchProductTypes = createAsyncThunk(
 
 export const deleteProduct = createAsyncThunk(
   'products/deleteProduct',
-  async (id, { rejectWithValue, getState }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      const state = getState();
-      const product = state.products.allProducts.find(p => p.id === id);
-      const orderId = product?.orderId;
       await axios.delete(`${API_URL}/products/${id}`);
-      return { id, orderId };
+      return id;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Ошибка удаления');
     }
   }
 );
-
 
 const initialState = {
   allProducts: [],
@@ -118,9 +111,7 @@ const productsSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.loading = false;
         const { products, orders } = action.payload;
-
         const ordersMap = Object.fromEntries(orders.map(o => [o.id, o]));
-
         state.allProducts = products.map(p => enrichProduct(p, ordersMap));
         state.filteredProducts = applyFilter(state.allProducts, state.selectedType);
       })
@@ -139,7 +130,7 @@ const productsSlice = createSlice({
       })
       .addCase(deleteProduct.fulfilled, (state, action) => {
         state.loading = false;
-        const { id } = action.payload;
+        const id = action.payload;
         state.allProducts = state.allProducts.filter(p => p.id !== id);
         state.filteredProducts = state.filteredProducts.filter(p => p.id !== id);
       })

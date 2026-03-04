@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import DeleteModal from "../../components/DeleteModal/DeleteModal.jsx";
 import OrderProductsPanel
   from "./components/OrderProductsPanel/OrderProductsPanel.jsx";
+import usePageAnimation from "../../hooks/usePageAnimation.js";
 
 import {
   clearCurrentOrder,
@@ -46,6 +47,8 @@ const OrdersPage = () => {
       dispatch(deleteOrder(deleteModal.orderId));
     }
   };
+
+  const container = usePageAnimation(!loading)
   if (loading && orders.length === 0) {
     return <div className={styles['orders__loading']}>Загрузка...</div>;
   }
@@ -55,6 +58,7 @@ const OrdersPage = () => {
   return (<section
       className={styles['orders']}
       aria-labelledby='orders-title'
+      ref={container}
     >
       <header className={`${styles['orders__header']} bg-body-secondary p-3  rounded`}>
         <button

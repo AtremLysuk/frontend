@@ -5,7 +5,7 @@ import Clock from "./components/Clock/Clock.jsx";
 
 const Header = () => {
 
-  return (<header className={`${styles['header']} shadow`}>
+  return (<header className={`${styles['header']} bg-light shadow`}>
 
     <div className={styles.header__logo}>
       <div className={styles.header__logoIcon}>
@@ -36,7 +36,7 @@ const Header = () => {
       <input
         type="search"
         placeholder="Поиск"
-        className={styles.header__searchInput}
+        className={`${styles.header__searchInput} bg-body-secondary`}
         aria-label="Поиск"
       />
     </div>

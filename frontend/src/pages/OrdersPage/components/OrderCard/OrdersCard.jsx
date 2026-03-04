@@ -1,15 +1,20 @@
-
 import styles from './OrderCard.module.scss'
 import {FaTrashAlt} from "react-icons/fa";
 import {IoList} from "react-icons/io5";
 import {MdChevronRight} from "react-icons/md";
 import {
-  getFullFormatDate, getShortFormatDate,
+  formatDateForDisplay, getFullFormatDate, getShortFormatDate
 } from "../../../../helpers/getFormatDateToIso.js";
 import {
   formatAmountUAH, formatAmountUSD
 } from "../../../../helpers/getConvertAmount.js";
+import {
+  getFormattedCountString
+} from "../../../../helpers/getFormattedCountString.js";
 
+const PRODUCT_FORMS = {
+  one: 'продукт', few: 'продукта', many: 'продуктов', other: 'продуктов'
+};
 const OrdersCard = ({
                       order,
                       variant = 'full',
@@ -18,17 +23,7 @@ const OrdersCard = ({
                       onDeleteClick
                     }) => {
   const isCompact = variant === 'compact'
-  // Преобразуем дату из формата бекенда (2024-01-15 10:00:00) в формат для отображения
-  const formatDateForDisplay = (dateString) => {
-    if (!dateString) return '-';
-    const date = new Date(dateString);
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = date.toLocaleString('ru', {month: 'short'}).replace('.', '');
-    const year = date.getFullYear();
-    return `${day} / ${month} / ${year}`;
-  };
-  const displayStartDate = formatDateForDisplay(order.date);
-  const displayEndDate = formatDateForDisplay(order.date);
+  const formattedFullDate = formatDateForDisplay(order.date)
   return (
     <article className={`bg-white ${styles.card} ${isCompact ? styles['card--compact'] : ''} ${isActive ? styles['card--active'] : ''}`}>
 
@@ -51,7 +46,7 @@ const OrdersCard = ({
 
         <div className={styles['card__info-count']}>
           <span>{order.productsCount || 0}</span>
-          <span>Продукта</span>
+          <span>{getFormattedCountString(order.productsCount || 0, PRODUCT_FORMS)}</span>
         </div>
 
         <div className={styles['card__info-dates']}>
@@ -59,13 +54,13 @@ const OrdersCard = ({
             className={styles['card__info-dates-start']}
             dateTime={order.date}
           >
-            {getShortFormatDate(displayStartDate)}
+            {getShortFormatDate(order.date)}
           </time>
           <time
             className={styles['card__info-dates-end']}
             dateTime={order.date}
           >
-            {getFullFormatDate(displayEndDate)}
+            {getFullFormatDate(formattedFullDate)}
           </time>
         </div>
 

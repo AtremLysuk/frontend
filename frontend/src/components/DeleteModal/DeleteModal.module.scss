@@ -1,59 +1,46 @@
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0 }
+  to { opacity: 1 }
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translate(-50%, -60%);
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    transform: translateY(0);
   }
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0%, 100% { transform: scale(1) }
+  50% { transform: scale(1.05) }
 }
 
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(2px);
-  z-index: 100;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   animation: fadeIn 0.2s ease-out;
 }
 
 .modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 101;
+  position: relative;
   background: #fff;
   border-radius: 8px;
   width: 560px;
   max-width: 90vw;
-  overflow: hidden;
+  max-height: 90vh;
+  overflow-y: auto;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   animation: slideIn 0.3s ease-out;
   outline: none;
-
 
   &:focus {
     outline: 2px solid var(--color-green);
@@ -85,10 +72,7 @@
       border-color: var(--color-text-primary);
     }
 
-    &:active {
-      transform: scale(0.95);
-    }
-
+    &:active { transform: scale(0.95) }
 
     &:focus-visible {
       outline: 2px solid var(--color-green);
@@ -121,7 +105,6 @@
       border-radius: 50%;
       background-color: var(--color-green);
       flex-shrink: 0;
-
       animation: pulse 2s infinite;
     }
 
@@ -140,9 +123,7 @@
         object-fit: contain;
         transition: transform 0.2s ease;
 
-        &:hover {
-          transform: scale(1.05);
-        }
+        &:hover { transform: scale(1.05) }
       }
     }
 
@@ -159,9 +140,7 @@
       text-decoration-color: transparent;
       transition: text-decoration-color 0.2s ease;
 
-      &:hover {
-        text-decoration-color: currentColor;
-      }
+      &:hover { text-decoration-color: currentColor }
     }
 
     &-sn {
@@ -183,7 +162,7 @@
 
   &__cancel {
     background: transparent;
-    border: none;
+    border: 1px solid transparent;
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
@@ -192,20 +171,14 @@
     transition: all 0.2s ease;
     padding: 10px 16px;
     border-radius: 24px;
-    border: 1px solid transparent;
-
 
     &:hover {
-
-      border: 1px solid #fff;
+      border-color: #fff;
       text-decoration: underline;
       transform: translateY(-1px);
     }
 
-    &:active {
-      transform: translateY(0);
-    }
-
+    &:active { transform: translateY(0) }
 
     &:focus-visible {
       outline: 2px solid #fff;
@@ -221,7 +194,7 @@
     gap: 8px;
     padding: 10px 24px;
     background: #fff;
-    border: none;
+    border: 1px solid transparent;
     border-radius: 50px;
     cursor: pointer;
     font-size: 14px;
@@ -231,20 +204,17 @@
     transition: all 0.2s ease;
     min-width: 120px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid transparent;
 
     &:hover {
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      border: 1px solid red;
-
+      border-color: red;
     }
 
     &:active {
       transform: translateY(0);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-
 
     &:focus-visible {
       outline: 2px solid #fff;
@@ -255,11 +225,8 @@
       transition: transform 0.2s ease;
     }
 
-    &:hover svg {
-      transform: scale(1.1);
-    }
+    &:hover svg { transform: scale(1.1) }
   }
-
 
   @media (max-width: 768px) {
     width: 95vw;
@@ -278,18 +245,11 @@
         height: 36px;
       }
 
-      &-name {
-        font-size: 13px;
-      }
-
-      &-sn {
-        font-size: 11px;
-      }
+      &-name { font-size: 13px }
+      &-sn { font-size: 11px }
     }
 
-    &__footer {
-      padding: 16px;
-    }
+    &__footer { padding: 16px }
 
     &__confirm {
       padding: 8px 20px;

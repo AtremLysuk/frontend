@@ -18,7 +18,7 @@
   gap: 12px;
   padding: 10px 16px;
   background-color: #ffffff;
-  border: 1px solid #eaeaea;
+  border: 1px solid var(--color-text-secondary);
   border-radius: 6px;
   font-size: 13px;
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
@@ -108,8 +108,18 @@
     flex-direction: column;
     gap: 2px;
     font-size: 12px;
-    color: var(--color-text-secondary, #666);
+    color: var(--color-text-secondary);
     white-space: nowrap;
+
+    time{
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+
+      span{
+        justify-self: flex-start;
+      }
+    }
   }
 
   &__condition {
@@ -120,25 +130,25 @@
   &__datesLabel {
     color: #aaa;
     font-size: 11px;
+    text-align: left;
   }
 
 
   &__prices {
     display: flex;
     flex-direction: column;
-    gap: 2px;
     white-space: nowrap;
   }
 
   &__priceUsd {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;
-    color: #333;
+    color: var(--color-border);
   }
 
   &__priceUah {
-    font-size: 12px;
-    color: var(--color-text-secondary, #666);
+    font-size: 14px;
+    color: var(--color-text-secondary);
     display: flex;
     align-items: center;
     gap: 2px;
@@ -179,11 +189,15 @@
   &__orderDates {
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    font-size: 12px;
-    color: var(--color-text-secondary, #666);
+
+    font-size: 14px;
+    color: var(--color-text-secondary);
     text-align: center;
     white-space: nowrap;
+
+    time:first-child {
+      font-size: 10px;
+    }
   }
 
   &__delete {

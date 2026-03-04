@@ -1,5 +1,4 @@
 
-
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import styles from './ProductsPage.module.scss';
@@ -7,12 +6,15 @@ import ProductCard from './components/ProductCard/ProductCard';
 import {
   clearFilter, fetchProducts, fetchProductTypes, setSelectedType
 } from '../../redux/slices/productsSlice.js';
+import usePageAnimation from "../../hooks/usePageAnimation.js";
 
 const ProductsPage = () => {
   const dispatch = useDispatch();
+
   const {
     filteredProducts, productTypes, selectedType, loading, error
   } = useSelector(state => state.products);
+  const container = usePageAnimation(!loading)
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -53,6 +55,7 @@ const ProductsPage = () => {
     <section
       className={`${styles.products} bg-body-secondary`}
       aria-labelledby="products-title"
+      ref={container}
     >
       <header className={`${styles.products__header} bg-body-secondary mb-5 rounded`}>
         <div className={styles.products__headerInner}>

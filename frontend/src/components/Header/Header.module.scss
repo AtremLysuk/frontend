@@ -3,7 +3,6 @@
   padding-inline: 5%;
   display: flex;
   align-items: center;
-  background-color: #ffffff;
   border-bottom: 1px solid #eaeaea;
   position: sticky;
   top: 0;
@@ -57,12 +56,12 @@
     border-radius: 4px;
     font-size: 13px;
     color: #333;
-    background: #fafafa;
     outline: none;
     transition: border-color 0.2s ease, background 0.2s ease;
 
     &::placeholder {
-      color: #bbb;
+      color: rgba(0, 0, 0, 0.7);
+      font-weight: 600;
     }
 
     &:focus {

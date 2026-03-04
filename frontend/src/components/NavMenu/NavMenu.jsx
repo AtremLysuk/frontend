@@ -14,7 +14,7 @@ const NavMenu = () => {
     path: "/users", label: "Пользователи"
   }, {path: "/settings", label: "Настройки"},];
   return (<div
-    className={styles.sidebar}
+    className={`${styles.sidebar} bg-light`}
 
   >
     <div className={styles['sidebar__user']}>
