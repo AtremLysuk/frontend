@@ -30,7 +30,7 @@ const ProductCard = ({product}) => {
   const imageUrl = photo ? `/images/${photo}` : '/images/placeholder.png';
   const handleDelete = () => dispatch(deleteProduct(id));
 
-  console.log(date)
+
 
 
   return (<div className={styles.card}>
