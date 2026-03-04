@@ -18,9 +18,9 @@ const Layout = () => {
 
 
       <main className={`col-12 col-md-9 col-lg-10 bg-body-secondary ${styles['main']}`}>
-        <PageTransition key={location.pathname}>
+        <div key={location.pathname} className={styles.page}>
           <Outlet />
-        </PageTransition>
+        </div>
       </main>
 
     </div>
