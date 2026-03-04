@@ -26,7 +26,6 @@ const OrdersPage = () => {
   useEffect(() => {
     dispatch(fetchOrders());
   }, [dispatch]);
-  console.log(orders)
   const handleOpenToggleProductsPanel = (orderId) => {
     if (currentOrder?.id === orderId) {
       dispatch(clearCurrentOrder());
@@ -48,7 +47,7 @@ const OrdersPage = () => {
     }
   };
 
-  const container = usePageAnimation(!loading)
+  const container = usePageAnimation();
   if (loading && orders.length === 0) {
     return <div className={styles['orders__loading']}>Загрузка...</div>;
   }

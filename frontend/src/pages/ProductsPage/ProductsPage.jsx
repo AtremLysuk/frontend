@@ -14,7 +14,7 @@ const ProductsPage = () => {
   const {
     filteredProducts, productTypes, selectedType, loading, error
   } = useSelector(state => state.products);
-  const container = usePageAnimation(!loading)
+  const container = usePageAnimation();
 
   useEffect(() => {
     dispatch(fetchProducts());
