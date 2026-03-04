@@ -1,20 +1,20 @@
 @use '../../scss/helpers/index' as *;
 
-.page {
-  opacity: 0;
-  transform: translateX(-30px);
-  filter: blur(4px);
-  animation: slideIn 0.35s ease-out forwards;
-  min-height: 100%;
-}
-
-@keyframes slideIn {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-    filter: blur(0);
-  }
-}
+//.page {
+//  opacity: 0;
+//  transform: translateX(-30px);
+//  filter: blur(4px);
+//  animation: slideIn 0.35s ease-out forwards;
+//  min-height: 100%;
+//}
+//
+//@keyframes slideIn {
+//  to {
+//    opacity: 1;
+//    transform: translateX(0);
+//    filter: blur(0);
+//  }
+//}
 
 .main {
   position: relative;
