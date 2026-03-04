@@ -10,7 +10,10 @@ const app = express();
 const server = http.createServer(app);
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: [
+    'http://localhost:5173',
+    'https://frontend-ruddy-eight-91.vercel.app'
+  ],
   credentials: true
 }));
 
@@ -26,7 +29,10 @@ app.use('/api/products', productsRouter);
 
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: [
+      'http://localhost:5173',
+      'https://frontend-ruddy-eight-91.vercel.app'
+    ],
     methods: ['GET', 'POST']
   }
 });
