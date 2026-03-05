@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://host.docker.internal:3001/api';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const formatGuaranteeDates = (guarantee) => {
   if (!guarantee) return null;
