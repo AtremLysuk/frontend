@@ -1,16 +1,148 @@
-# React + Vite
+# 📦 Inventory — Orders & Products SPA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Тестовое задание: SPA-приложение для управления приходами и продуктами.
 
-Currently, two official plugins are available:
+## 🌐 Демо
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend:** https://frontend-ruddy-eight-91.vercel.app/orders
+- **Backend API:** https://frontend-production-5bc0.up.railway.app/api
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Функциональность
 
-## Expanding the ESLint configuration
+- 📋 **Приходы (Orders)** — список всех приходов с информацией:
+    - Название прихода
+    - Количество продуктов
+    - Дата создания в двух форматах
+    - Сумма прихода в USD и UAH
+    - Удаление прихода через модальное окно
+    - Клик на приход открывает панель с продуктами рядом
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 📦 **Продукты (Products)** — список всех продуктов с фильтрацией по типу:
+    - Название и тип продукта
+    - Даты гарантии в разных форматах
+    - Цена в USD и UAH
+    - Название прихода
+    - Статус продукта
+
+- 🕐 **Header** — отображает текущую дату и время в реальном времени
+- 🔌 **WebSocket** — счётчик активных сессий (вкладок) в реальном времени
+- 🎨 **Анимации** — переходы между страницами и компонентами
+
+---
+
+## 🛠 Технологии
+
+| Категория | Технологии |
+|-----------|-----------|
+| Frontend | React 18, Redux Toolkit, React Router v6 |
+| Стили | SCSS, BEM, Bootstrap 5 |
+| HTTP | Axios |
+| WebSocket | Socket.io |
+| Анимации | CSS Transitions, GSAP |
+| Backend | Node.js, Express |
+| DevOps | Docker, Docker Compose |
+| Deploy | Vercel (frontend), Railway (backend) |
+
+---
+
+## 📁 Структура проекта
+
+
+project/
+├── backend/          # Node.js + Express сервер
+│   ├── data/         # Данные (db.js)
+│   ├── routes/       # API роуты
+│   ├── server.js     # Точка входа
+│   └── Dockerfile
+├── frontend/         # React приложение
+│   ├── src/
+│   │   ├── components/   # Переиспользуемые компоненты
+│   │   ├── pages/        # Страницы (Orders, Products)
+│   │   ├── redux/        # Redux слайсы
+│   │   ├── hooks/        # Кастомные хуки
+│   │   └── helpers/      # Утилиты
+│   ├── Dockerfile
+│   └── nginx.conf
+├── database/
+│   └── database_schema.sql  # Схема БД для MySQL Workbench
+└── docker-compose.yml
+
+
+---
+
+## ⚙️ Установка и запуск
+
+### Вариант 1 — Docker (рекомендуется)
+
+
+# Клонировать репозиторий
+git clone https://github.com/AtremLysuk/frontend.git
+cd frontend
+
+# Запустить все сервисы
+docker-compose up --build
+```
+
+- Фронт: http://localhost
+- Бэкенд: http://localhost:3001
+
+---
+
+### Вариант 2 — Локально
+
+**Бэкенд:**
+```bash
+cd backend
+npm install
+node server.js
+# Сервер запустится на http://localhost:3001
+
+
+**Фронтенд** (в новом терминале):
+
+cd frontend
+npm install
+npm run dev
+# Приложение запустится на http://localhost:5173
+
+
+---
+
+## 🗄 Схема БД
+
+Файл схемы базы данных находится в папке `/database/database_schema.sql`.
+
+Открыть в MySQL Workbench:
+1. Открой MySQL Workbench
+2. `File` → `Open SQL Script`
+3. Выбери файл `database_schema.sql`
+
+---
+
+## 📡 API Endpoints
+
+| Метод | URL | Описание |
+|-------|-----|----------|
+| GET | `/api/orders` | Все приходы |
+| GET | `/api/orders/:id` | Приход по ID |
+| DELETE | `/api/orders/:id` | Удалить приход |
+| GET | `/api/products` | Все продукты |
+| GET | `/api/products/types` | Типы продуктов |
+| GET | `/api/products/order/:id` | Продукты по приходу |
+
+---
+
+## 🌿 Git ветвление
+
+master
+└── develop
+    ├── feature/backend
+    ├── feature/header
+    ├── feature/layout-complete
+    ├── feature/modal
+    ├── feature/navbar
+    ├── feature/orders-page
+    ├── feature/products-page
+    └── feature/page-transitions
