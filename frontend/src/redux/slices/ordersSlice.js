@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://host.docker.internal:3001/api';
 
 const calculateOrderTotals = (order, products = []) => {
   const totals = products.reduce((acc, product) => {
@@ -27,8 +27,8 @@ export const fetchOrders = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const [ordersRes, productsRes] = await Promise.all([
-        axios.get(`${API_URL}/api/orders`),
-        axios.get(`${API_URL}/api/products`),
+        axios.get(`${API_URL}/orders`),
+        axios.get(`${API_URL}/products`),
       ]);
       return { orders: ordersRes.data, products: productsRes.data };
     } catch (error) {
@@ -41,7 +41,7 @@ export const fetchOrderById = createAsyncThunk(
   'orders/fetchOrderById',
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`${API_URL}/api/orders/${id}`);
+      const { data } = await axios.get(`${API_URL}/orders/${id}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Ошибка загрузки');
@@ -53,7 +53,7 @@ export const deleteOrder = createAsyncThunk(
   'orders/deleteOrder',
   async (id, { rejectWithValue }) => {
     try {
-      await axios.delete(`${API_URL}/api/orders/${id}`);
+      await axios.delete(`${API_URL}/orders/${id}`);
       return id;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Ошибка удаления');
