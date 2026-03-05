@@ -1,539 +1,287 @@
-const products = [{
-  id: 1,
-  serialNumber: 1234567,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'Gigabyte Technology X58-USB3 (Socket 1366) 6 X58-USB3',
-  type: 'Monitors',
-  specification: '27" 4K UHD, IPS, 60Hz',
-  guarantee: {
-    start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00'
-  },
-  price: [{value: 450, symbol: 'USD', isDefault: 0}, {
-    value: 11700,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 1,
-  status: 'free',
-  date: '2024-01-15 10:00:00'
-}, {
-  id: 2,
-  serialNumber: 2345678,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'ASUS ROG Swift PG32UQ 32" 4K',
-  type: 'Monitors',
-  specification: '32" 4K, 144Hz, HDR600',
-  guarantee: {
-    start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00'
-  },
-  price: [{value: 850, symbol: 'USD', isDefault: 0}, {
-    value: 22100,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 1,
-  status: 'free',
-  date: '2024-01-15 10:00:00'
-}, {
-  id: 3,
-  serialNumber: 3456789,
-  isNew: 0,
-  photo: 'monitor.png',
-  title: 'Samsung Odyssey G7 27" Curved',
-  type: 'Monitors',
-  specification: '27" 2K, 240Hz, Curved',
-  guarantee: {
-    start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00'
-  },
-  price: [{value: 550, symbol: 'USD', isDefault: 0}, {
-    value: 14300,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 1,
-  status: 'repair',
-  date: '2024-01-15 10:00:00'
-}, {
-  id: 4,
-  serialNumber: 4567890,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'LG UltraGear 27GP950-B',
-  type: 'Monitors',
-  specification: '27" 4K, 144Hz, Nano IPS',
-  guarantee: {
-    start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00'
-  },
-  price: [{value: 650, symbol: 'USD', isDefault: 0}, {
-    value: 16900,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 1,
-  status: 'free',
-  date: '2024-01-15 10:00:00'
-}, {
-  id: 5,
-  serialNumber: 5678901,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'Acer Predator XB273K',
-  type: 'Monitors',
-  specification: '27" 4K, 144Hz, G-Sync',
-  guarantee: {
-    start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00'
-  },
-  price: [{value: 700, symbol: 'USD', isDefault: 0}, {
-    value: 18200,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 1,
-  status: 'free',
-  date: '2024-01-15 10:00:00'
-}, {
-  id: 6,
-  serialNumber: 6789012,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'Apple MacBook Pro 16" M3 Max',
-  type: 'Laptops',
-  specification: 'M3 Max, 48GB RAM, 1TB SSD',
-  guarantee: {
-    start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00'
-  },
-  price: [{value: 3200, symbol: 'USD', isDefault: 0}, {
-    value: 83200,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 2,
-  status: 'free',
-  date: '2024-02-10 14:30:00'
-}, {
-  id: 7,
-  serialNumber: 7890123,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'ASUS ROG Zephyrus G16',
-  type: 'Laptops',
-  specification: 'Intel i9, RTX 4080, 32GB RAM',
-  guarantee: {
-    start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00'
-  },
-  price: [{value: 2500, symbol: 'USD', isDefault: 0}, {
-    value: 65000,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 2,
-  status: 'repair',
-  date: '2024-02-10 14:30:00'
-}, {
-  id: 8,
-  serialNumber: 8901234,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'Lenovo Legion 7 Pro',
-  type: 'Laptops',
-  specification: 'AMD Ryzen 9, RTX 4090, 64GB RAM',
-  guarantee: {
-    start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00'
-  },
-  price: [{value: 2800, symbol: 'USD', isDefault: 0}, {
-    value: 72800,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 2,
-  status: 'free',
-  date: '2024-02-10 14:30:00'
-}, {
-  id: 9,
-  serialNumber: 9012345,
-  isNew: 0,
-  photo: 'monitor.png',
-  title: 'Dell XPS 17 9730',
-  type: 'Laptops',
-  specification: 'Intel i9, RTX 4070, 32GB RAM',
-  guarantee: {
-    start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00'
-  },
-  price: [{value: 2300, symbol: 'USD', isDefault: 0}, {
-    value: 59800,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 2,
-  status: 'free',
-  date: '2024-02-10 14:30:00'
-}, {
-  id: 10,
-  serialNumber: 1234560,
-  isNew: 0,
-  photo: 'monitor.png',
-  title: 'HP Spectre x360 16"',
-  type: 'Laptops',
-  specification: 'Intel i7, 32GB RAM, 2TB SSD',
-  guarantee: {
-    start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00'
-  },
-  price: [{value: 1800, symbol: 'USD', isDefault: 0}, {
-    value: 46800,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 2,
-  status: 'free',
-  date: '2024-02-10 14:30:00'
-}, {
-  id: 11,
-  serialNumber: 2345670,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'Logitech MX Master 3S',
-  type: 'Mouse',
-  specification: 'Wireless, 8000 DPI, USB-C',
-  guarantee: {
-    start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00'
-  },
-  price: [{value: 80, symbol: 'USD', isDefault: 0}, {
-    value: 2080,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 3,
-  status: 'free',
-  date: '2024-03-05 09:15:00'
-}, {
-  id: 12,
-  serialNumber: 3456780,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'Razer DeathAdder V3 Pro',
-  type: 'Mouse',
-  specification: 'Wireless, 30K DPI, 63g',
-  guarantee: {
-    start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00'
-  },
-  price: [{value: 120, symbol: 'USD', isDefault: 0}, {
-    value: 3120,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 3,
-  status: 'free',
-  date: '2024-03-05 09:15:00'
-}, {
-  id: 13,
-  serialNumber: 4567890,
-  isNew: 0,
-  photo: 'monitor.png',
-  title: 'Logitech G Pro X Superlight',
-  type: 'Mouse',
-  specification: 'Wireless, 25K DPI, 63g',
-  guarantee: {
-    start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00'
-  },
-  price: [{value: 130, symbol: 'USD', isDefault: 0}, {
-    value: 3380,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 3,
-  status: 'repair',
-  date: '2024-03-05 09:15:00'
-}, {
-  id: 14,
-  serialNumber: 5678901,
-  isNew: 0,
-  photo: 'monitor.png',
-  title: 'SteelSeries Aerox 9',
-  type: 'Mouse',
-  specification: 'Wireless, 18K DPI, 89g',
-  guarantee: {
-    start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00'
-  },
-  price: [{value: 110, symbol: 'USD', isDefault: 0}, {
-    value: 2860,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 3,
-  status: 'free',
-  date: '2024-03-05 09:15:00'
-}, {
-  id: 15,
-  serialNumber: 6789012,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'Corsair Darkstar RGB',
-  type: 'Mouse',
-  specification: 'Wireless, 26K DPI, MMO',
-  guarantee: {
-    start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00'
-  },
-  price: [{value: 140, symbol: 'USD', isDefault: 0}, {
-    value: 3640,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 3,
-  status: 'free',
-  date: '2024-03-05 09:15:00'
-}, {
-  id: 16,
-  serialNumber: 7890123,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'ASUS ROG Harpe Ace Aim Lab',
-  type: 'Mouse',
-  specification: 'Wireless, 36K DPI, 54g',
-  guarantee: {
-    start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00'
-  },
-  price: [{value: 125, symbol: 'USD', isDefault: 0}, {
-    value: 3250,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 3,
-  status: 'free',
-  date: '2024-03-05 09:15:00'
-}, {
-  id: 17,
-  serialNumber: 8901234,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'Logitech G915 TKL',
-  type: 'Keyboard',
-  specification: 'Wireless, Mechanical, RGB',
-  guarantee: {
-    start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00'
-  },
-  price: [{value: 180, symbol: 'USD', isDefault: 0}, {
-    value: 4680,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 4,
-  status: 'free',
-  date: '2024-04-12 11:20:00'
-}, {
-  id: 18,
-  serialNumber: 9012345,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'Razer BlackWidow V4 Pro',
-  type: 'Keyboard',
-  specification: 'Wired, Mechanical, RGB',
-  guarantee: {
-    start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00'
-  },
-  price: [{value: 200, symbol: 'USD', isDefault: 0}, {
-    value: 5200,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 4,
-  status: 'free',
-  date: '2024-04-12 11:20:00'
-}, {
-  id: 19,
-  serialNumber: 1234567,
-  isNew: 0,
-  photo: 'monitor.png',
-  title: 'Keychron Q1 Pro',
-  type: 'Keyboard',
-  specification: 'Wireless, Mechanical, Aluminum',
-  guarantee: {
-    start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00'
-  },
-  price: [{value: 160, symbol: 'USD', isDefault: 0}, {
-    value: 4160,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 4,
-  status: 'repair',
-  date: '2024-04-12 11:20:00'
-}, {
-  id: 20,
-  serialNumber: 2345678,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'Corsair K100 RGB',
-  type: 'Keyboard',
-  specification: 'Wired, Optical, RGB',
-  guarantee: {
-    start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00'
-  },
-  price: [{value: 220, symbol: 'USD', isDefault: 0}, {
-    value: 5720,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 4,
-  status: 'free',
-  date: '2024-04-12 11:20:00'
-}, {
-  id: 21,
-  serialNumber: 3456789,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'SteelSeries Apex Pro TKL',
-  type: 'Keyboard',
-  specification: 'Wired, OmniPoint, RGB',
-  guarantee: {
-    start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00'
-  },
-  price: [{value: 190, symbol: 'USD', isDefault: 0}, {
-    value: 4940,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 4,
-  status: 'free',
-  date: '2024-04-12 11:20:00'
-}, {
-  id: 22,
-  serialNumber: 4567890,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'SteelSeries Arctis Nova Pro Wireless',
-  type: 'Headset',
-  specification: 'Wireless, ANC, Hi-Res',
-  guarantee: {
-    start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00'
-  },
-  price: [{value: 300, symbol: 'USD', isDefault: 0}, {
-    value: 7800,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 5,
-  status: 'free',
-  date: '2024-05-18 16:45:00'
-}, {
-  id: 23,
-  serialNumber: 5678901,
-  isNew: 0,
-  photo: 'monitor.png',
-  title: 'Logitech G Pro X 2 Lightspeed',
-  type: 'Headset',
-  specification: 'Wireless, Blue VO!CE',
-  guarantee: {
-    start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00'
-  },
-  price: [{value: 200, symbol: 'USD', isDefault: 0}, {
-    value: 5200,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 5,
-  status: 'free',
-  date: '2024-05-18 16:45:00'
-}, {
-  id: 24,
-  serialNumber: 6789012,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'Beyerdynamic DT 990 Pro',
-  type: 'Headset',
-  specification: 'Wired, Open-back, 250 Ohm',
-  guarantee: {
-    start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00'
-  },
-  price: [{value: 150, symbol: 'USD', isDefault: 0}, {
-    value: 3900,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 5,
-  status: 'repair',
-  date: '2024-05-18 16:45:00'
-}, {
-  id: 25,
-  serialNumber: 7890123,
-  isNew: 1,
-  photo: 'monitor.png',
-  title: 'Sony WH-1000XM5',
-  type: 'Headset',
-  specification: 'Wireless, ANC, LDAC',
-  guarantee: {
-    start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00'
-  },
-  price: [{value: 350, symbol: 'USD', isDefault: 0}, {
-    value: 9100,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 5,
-  status: 'free',
-  date: '2024-05-18 16:45:00'
-}, {
-  id: 26,
-  serialNumber: 8901234,
-  isNew: 0,
-  photo: 'monitor.png',
-  title: 'HyperX Cloud Alpha Wireless',
-  type: 'Headset',
-  specification: 'Wireless, 300h battery',
-  guarantee: {
-    start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00'
-  },
-  price: [{value: 180, symbol: 'USD', isDefault: 0}, {
-    value: 4680,
-    symbol: 'UAH',
-    isDefault: 1
-  }],
-  orderId: 5,
-  status: 'free',
-  date: '2024-05-18 16:45:00'
-}];
-const orders = [{
-  id: 1,
-  title: 'Длинное предлинное длиннючее название прихода',
-  date: '2024-01-15 10:00:00',
-  description: 'Поставка игровых мониторов для киберспортивного клуба',
-  productsCount: 5
-}, {
-  id: 2,
-  title: 'Длинное название прихода',
-  date: '2024-02-10 14:30:00',
-  description: 'Закупка мощных ноутбуков для команды разработки',
-  productsCount: 5
-}, {
-  id: 3,
-  title: 'Длинное предлинное название прихода',
-  date: '2024-03-05 09:15:00',
-  description: 'Разные модели игровых мышей',
-  productsCount: 6
-}, {
-  id: 4,
-  title: 'Длинное предлинное длиннючее название прихода',
-  date: '2024-04-12 11:20:00',
-  description: 'Клавиатуры для офиса и игр',
-  productsCount: 5
-}, {
-  id: 5,
-  title: 'Длинное название прихода',
-  date: '2024-05-18 16:45:00',
-  description: 'Беспроводные гарнитуры высокого класса',
-  productsCount: 5
-}];
+const products = [
+  { id: 1, serialNumber: 1234567, isNew: 1, photo: 'monitor.png', title: 'Gigabyte M27Q X 27" QHD', type: 'Monitors', specification: '27" QHD, IPS, 240Hz', guarantee: { start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00' }, price: [{ value: 450, symbol: 'USD', isDefault: 0 }, { value: 11700, symbol: 'UAH', isDefault: 1 }], orderId: 1, status: 'free', date: '2024-01-15 10:00:00' },
+  { id: 2, serialNumber: 2345678, isNew: 1, photo: 'monitor.png', title: 'ASUS ROG Swift PG32UQ 32" 4K', type: 'Monitors', specification: '32" 4K, 144Hz, HDR600', guarantee: { start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00' }, price: [{ value: 850, symbol: 'USD', isDefault: 0 }, { value: 22100, symbol: 'UAH', isDefault: 1 }], orderId: 1, status: 'free', date: '2024-01-15 10:00:00' },
+  { id: 3, serialNumber: 3456789, isNew: 0, photo: 'monitor.png', title: 'Samsung Odyssey G7 27" Curved', type: 'Monitors', specification: '27" 2K, 240Hz, Curved', guarantee: { start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00' }, price: [{ value: 550, symbol: 'USD', isDefault: 0 }, { value: 14300, symbol: 'UAH', isDefault: 1 }], orderId: 1, status: 'repair', date: '2024-01-15 10:00:00' },
+  { id: 4, serialNumber: 4567890, isNew: 1, photo: 'monitor.png', title: 'LG UltraGear 27GP950-B', type: 'Monitors', specification: '27" 4K, 144Hz, Nano IPS', guarantee: { start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00' }, price: [{ value: 650, symbol: 'USD', isDefault: 0 }, { value: 16900, symbol: 'UAH', isDefault: 1 }], orderId: 1, status: 'free', date: '2024-01-15 10:00:00' },
+  { id: 5, serialNumber: 5678901, isNew: 1, photo: 'monitor.png', title: 'Acer Predator XB273K', type: 'Monitors', specification: '27" 4K, 144Hz, G-Sync', guarantee: { start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00' }, price: [{ value: 700, symbol: 'USD', isDefault: 0 }, { value: 18200, symbol: 'UAH', isDefault: 1 }], orderId: 1, status: 'free', date: '2024-01-15 10:00:00' },
+  { id: 6, serialNumber: 6789012, isNew: 1, photo: 'monitor.png', title: 'Dell Alienware AW3423DW', type: 'Monitors', specification: '34" QD-OLED, 175Hz, Ultra-Wide', guarantee: { start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00' }, price: [{ value: 1100, symbol: 'USD', isDefault: 0 }, { value: 28600, symbol: 'UAH', isDefault: 1 }], orderId: 1, status: 'free', date: '2024-01-15 10:00:00' },
+  { id: 7, serialNumber: 7891234, isNew: 0, photo: 'monitor.png', title: 'Philips Evnia 27M2C5500W', type: 'Monitors', specification: '27" QHD, Mini LED, 240Hz', guarantee: { start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00' }, price: [{ value: 480, symbol: 'USD', isDefault: 0 }, { value: 12480, symbol: 'UAH', isDefault: 1 }], orderId: 1, status: 'free', date: '2024-01-15 10:00:00' },
+  { id: 8, serialNumber: 8902345, isNew: 1, photo: 'monitor.png', title: 'BenQ MOBIUZ EX2710U', type: 'Monitors', specification: '27" 4K, IPS, 144Hz', guarantee: { start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00' }, price: [{ value: 520, symbol: 'USD', isDefault: 0 }, { value: 13520, symbol: 'UAH', isDefault: 1 }], orderId: 1, status: 'repair', date: '2024-01-15 10:00:00' },
+  { id: 9, serialNumber: 9013456, isNew: 1, photo: 'monitor.png', title: 'Corsair Xeneon 32QHD165', type: 'Monitors', specification: '32" QHD, IPS, 165Hz', guarantee: { start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00' }, price: [{ value: 600, symbol: 'USD', isDefault: 0 }, { value: 15600, symbol: 'UAH', isDefault: 1 }], orderId: 1, status: 'free', date: '2024-01-15 10:00:00' },
+  { id: 10, serialNumber: 1024567, isNew: 0, photo: 'monitor.png', title: 'MSI Optix MPG321UR-QD', type: 'Monitors', specification: '32" 4K, 144Hz, Quantum Dot', guarantee: { start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00' }, price: [{ value: 750, symbol: 'USD', isDefault: 0 }, { value: 19500, symbol: 'UAH', isDefault: 1 }], orderId: 1, status: 'free', date: '2024-01-15 10:00:00' },
+  { id: 11, serialNumber: 1135678, isNew: 1, photo: 'monitor.png', title: 'ViewSonic Elite XG271QG', type: 'Monitors', specification: '27" QHD, 165Hz, G-Sync', guarantee: { start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00' }, price: [{ value: 670, symbol: 'USD', isDefault: 0 }, { value: 17420, symbol: 'UAH', isDefault: 1 }], orderId: 1, status: 'free', date: '2024-01-15 10:00:00' },
+  { id: 12, serialNumber: 1246789, isNew: 1, photo: 'monitor.png', title: 'Gigabyte M32U 32" 4K', type: 'Monitors', specification: '32" 4K, 144Hz, SS IPS', guarantee: { start: '2024-01-15 10:00:00', end: '2026-01-15 10:00:00' }, price: [{ value: 580, symbol: 'USD', isDefault: 0 }, { value: 15080, symbol: 'UAH', isDefault: 1 }], orderId: 1, status: 'free', date: '2024-01-15 10:00:00' },
+
+  // Order 2 - Laptops (15 products)
+  { id: 13, serialNumber: 2001001, isNew: 1, photo: 'monitor.png', title: 'Apple MacBook Pro 16" M3 Max', type: 'Laptops', specification: 'M3 Max, 48GB RAM, 1TB SSD', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 3200, symbol: 'USD', isDefault: 0 }, { value: 83200, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'free', date: '2024-02-10 14:30:00' },
+  { id: 14, serialNumber: 2001002, isNew: 1, photo: 'monitor.png', title: 'ASUS ROG Zephyrus G16', type: 'Laptops', specification: 'Intel i9, RTX 4080, 32GB RAM', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 2500, symbol: 'USD', isDefault: 0 }, { value: 65000, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'repair', date: '2024-02-10 14:30:00' },
+  { id: 15, serialNumber: 2001003, isNew: 1, photo: 'monitor.png', title: 'Lenovo Legion 7 Pro', type: 'Laptops', specification: 'AMD Ryzen 9, RTX 4090, 64GB RAM', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 2800, symbol: 'USD', isDefault: 0 }, { value: 72800, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'free', date: '2024-02-10 14:30:00' },
+  { id: 16, serialNumber: 2001004, isNew: 0, photo: 'monitor.png', title: 'Dell XPS 17 9730', type: 'Laptops', specification: 'Intel i9, RTX 4070, 32GB RAM', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 2300, symbol: 'USD', isDefault: 0 }, { value: 59800, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'free', date: '2024-02-10 14:30:00' },
+  { id: 17, serialNumber: 2001005, isNew: 0, photo: 'monitor.png', title: 'HP Spectre x360 16"', type: 'Laptops', specification: 'Intel i7, 32GB RAM, 2TB SSD', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 1800, symbol: 'USD', isDefault: 0 }, { value: 46800, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'free', date: '2024-02-10 14:30:00' },
+  { id: 18, serialNumber: 2001006, isNew: 1, photo: 'monitor.png', title: 'Microsoft Surface Laptop 5', type: 'Laptops', specification: 'Intel i7, 16GB RAM, 512GB SSD', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 1500, symbol: 'USD', isDefault: 0 }, { value: 39000, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'free', date: '2024-02-10 14:30:00' },
+  { id: 19, serialNumber: 2001007, isNew: 1, photo: 'monitor.png', title: 'Razer Blade 18"', type: 'Laptops', specification: 'Intel i9, RTX 4090, 32GB RAM', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 4000, symbol: 'USD', isDefault: 0 }, { value: 104000, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'free', date: '2024-02-10 14:30:00' },
+  { id: 20, serialNumber: 2001008, isNew: 0, photo: 'monitor.png', title: 'Acer Predator Helios 16', type: 'Laptops', specification: 'Intel i9, RTX 4080, 32GB RAM', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 2200, symbol: 'USD', isDefault: 0 }, { value: 57200, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'repair', date: '2024-02-10 14:30:00' },
+  { id: 21, serialNumber: 2001009, isNew: 1, photo: 'monitor.png', title: 'MSI Titan GT77 HX', type: 'Laptops', specification: 'Intel i9 HX, RTX 4090, 64GB RAM', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 3500, symbol: 'USD', isDefault: 0 }, { value: 91000, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'free', date: '2024-02-10 14:30:00' },
+  { id: 22, serialNumber: 2001010, isNew: 1, photo: 'monitor.png', title: 'Samsung Galaxy Book3 Ultra', type: 'Laptops', specification: 'Intel i9, RTX 4070, 32GB RAM', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 2600, symbol: 'USD', isDefault: 0 }, { value: 67600, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'free', date: '2024-02-10 14:30:00' },
+  { id: 23, serialNumber: 2001011, isNew: 0, photo: 'monitor.png', title: 'LG Gram 17 2024', type: 'Laptops', specification: 'Intel i7, 16GB RAM, 1TB SSD', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 1700, symbol: 'USD', isDefault: 0 }, { value: 44200, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'free', date: '2024-02-10 14:30:00' },
+  { id: 24, serialNumber: 2001012, isNew: 1, photo: 'monitor.png', title: 'Asus Zenbook Pro 16X', type: 'Laptops', specification: 'Intel i9, RTX 4070, OLED', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 2400, symbol: 'USD', isDefault: 0 }, { value: 62400, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'free', date: '2024-02-10 14:30:00' },
+  { id: 25, serialNumber: 2001013, isNew: 0, photo: 'monitor.png', title: 'Huawei MateBook X Pro 2024', type: 'Laptops', specification: 'Intel i7, 16GB RAM, 1TB SSD', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 1600, symbol: 'USD', isDefault: 0 }, { value: 41600, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'free', date: '2024-02-10 14:30:00' },
+  { id: 26, serialNumber: 2001014, isNew: 1, photo: 'monitor.png', title: 'Gigabyte Aorus Master 17', type: 'Laptops', specification: 'Intel i9, RTX 4090, 32GB RAM', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 3100, symbol: 'USD', isDefault: 0 }, { value: 80600, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'repair', date: '2024-02-10 14:30:00' },
+  { id: 27, serialNumber: 2001015, isNew: 1, photo: 'monitor.png', title: 'Alienware m18 R2', type: 'Laptops', specification: 'Intel i9 HX, RTX 4090, 32GB RAM', guarantee: { start: '2024-02-10 14:30:00', end: '2026-02-10 14:30:00' }, price: [{ value: 3800, symbol: 'USD', isDefault: 0 }, { value: 98800, symbol: 'UAH', isDefault: 1 }], orderId: 2, status: 'free', date: '2024-02-10 14:30:00' },
+
+  // Order 3 - Mouse (18 products)
+  { id: 28, serialNumber: 3001001, isNew: 1, photo: 'monitor.png', title: 'Logitech MX Master 3S', type: 'Mouse', specification: 'Wireless, 8000 DPI, USB-C', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 80, symbol: 'USD', isDefault: 0 }, { value: 2080, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+  { id: 29, serialNumber: 3001002, isNew: 1, photo: 'monitor.png', title: 'Razer DeathAdder V3 Pro', type: 'Mouse', specification: 'Wireless, 30K DPI, 63g', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 120, symbol: 'USD', isDefault: 0 }, { value: 3120, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+  { id: 30, serialNumber: 3001003, isNew: 0, photo: 'monitor.png', title: 'Logitech G Pro X Superlight 2', type: 'Mouse', specification: 'Wireless, 32K DPI, 60g', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 130, symbol: 'USD', isDefault: 0 }, { value: 3380, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'repair', date: '2024-03-05 09:15:00' },
+  { id: 31, serialNumber: 3001004, isNew: 0, photo: 'monitor.png', title: 'SteelSeries Aerox 9 Wireless', type: 'Mouse', specification: 'Wireless, 18K DPI, 89g', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 110, symbol: 'USD', isDefault: 0 }, { value: 2860, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+  { id: 32, serialNumber: 3001005, isNew: 1, photo: 'monitor.png', title: 'Corsair Darkstar RGB Wireless', type: 'Mouse', specification: 'Wireless, 26K DPI, MMO', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 140, symbol: 'USD', isDefault: 0 }, { value: 3640, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+  { id: 33, serialNumber: 3001006, isNew: 1, photo: 'monitor.png', title: 'ASUS ROG Harpe Ace Aim Lab', type: 'Mouse', specification: 'Wireless, 36K DPI, 54g', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 125, symbol: 'USD', isDefault: 0 }, { value: 3250, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+  { id: 34, serialNumber: 3001007, isNew: 1, photo: 'monitor.png', title: 'Zowie EC2-CW', type: 'Mouse', specification: 'Wireless, 3200 DPI, Ergonomic', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 100, symbol: 'USD', isDefault: 0 }, { value: 2600, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+  { id: 35, serialNumber: 3001008, isNew: 0, photo: 'monitor.png', title: 'HyperX Pulsefire Haste 2 Wireless', type: 'Mouse', specification: 'Wireless, 26K DPI, 61g', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 90, symbol: 'USD', isDefault: 0 }, { value: 2340, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+  { id: 36, serialNumber: 3001009, isNew: 1, photo: 'monitor.png', title: 'Finalmouse Starlight-12 Phantom', type: 'Mouse', specification: 'Wireless, 20K DPI, 42g', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 190, symbol: 'USD', isDefault: 0 }, { value: 4940, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'repair', date: '2024-03-05 09:15:00' },
+  { id: 37, serialNumber: 3001010, isNew: 1, photo: 'monitor.png', title: 'Endgame Gear XM2we', type: 'Mouse', specification: 'Wireless, 26K DPI, 70g', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 75, symbol: 'USD', isDefault: 0 }, { value: 1950, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+  { id: 38, serialNumber: 3001011, isNew: 0, photo: 'monitor.png', title: 'Pulsar X2 Wireless', type: 'Mouse', specification: 'Wireless, 26K DPI, 55g', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 95, symbol: 'USD', isDefault: 0 }, { value: 2470, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+  { id: 39, serialNumber: 3001012, isNew: 1, photo: 'monitor.png', title: 'Razer Viper V3 Pro', type: 'Mouse', specification: 'Wireless, 35K DPI, 74g', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 160, symbol: 'USD', isDefault: 0 }, { value: 4160, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+  { id: 40, serialNumber: 3001013, isNew: 0, photo: 'monitor.png', title: 'Logitech G502 X Plus', type: 'Mouse', specification: 'Wireless, 25K DPI, 106g', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 115, symbol: 'USD', isDefault: 0 }, { value: 2990, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+  { id: 41, serialNumber: 3001014, isNew: 1, photo: 'monitor.png', title: 'SteelSeries Prime Wireless', type: 'Mouse', specification: 'Wireless, 18K DPI, 80g', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 85, symbol: 'USD', isDefault: 0 }, { value: 2210, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+  { id: 42, serialNumber: 3001015, isNew: 1, photo: 'monitor.png', title: 'Roccat Kone XP Air', type: 'Mouse', specification: 'Wireless, 19K DPI, RGB', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 100, symbol: 'USD', isDefault: 0 }, { value: 2600, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'repair', date: '2024-03-05 09:15:00' },
+  { id: 43, serialNumber: 3001016, isNew: 0, photo: 'monitor.png', title: 'Cooler Master MM731', type: 'Mouse', specification: 'Wireless, 19K DPI, 59g', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 70, symbol: 'USD', isDefault: 0 }, { value: 1820, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+  { id: 44, serialNumber: 3001017, isNew: 1, photo: 'monitor.png', title: 'Ninjutso Sora V2', type: 'Mouse', specification: 'Wireless, 26K DPI, 50g', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 110, symbol: 'USD', isDefault: 0 }, { value: 2860, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+  { id: 45, serialNumber: 3001018, isNew: 1, photo: 'monitor.png', title: 'ASUS ROG Keris II Ace', type: 'Mouse', specification: 'Wireless, 36K DPI, 54g', guarantee: { start: '2024-03-05 09:15:00', end: '2025-03-05 09:15:00' }, price: [{ value: 130, symbol: 'USD', isDefault: 0 }, { value: 3380, symbol: 'UAH', isDefault: 1 }], orderId: 3, status: 'free', date: '2024-03-05 09:15:00' },
+
+  // Order 4 - Keyboard (13 products)
+  { id: 46, serialNumber: 4001001, isNew: 1, photo: 'monitor.png', title: 'Logitech G915 TKL', type: 'Keyboard', specification: 'Wireless, Mechanical, RGB', guarantee: { start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00' }, price: [{ value: 180, symbol: 'USD', isDefault: 0 }, { value: 4680, symbol: 'UAH', isDefault: 1 }], orderId: 4, status: 'free', date: '2024-04-12 11:20:00' },
+  { id: 47, serialNumber: 4001002, isNew: 1, photo: 'monitor.png', title: 'Razer BlackWidow V4 Pro', type: 'Keyboard', specification: 'Wired, Mechanical, RGB', guarantee: { start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 4, status: 'free', date: '2024-04-12 11:20:00' },
+  { id: 48, serialNumber: 4001003, isNew: 0, photo: 'monitor.png', title: 'Keychron Q1 Pro', type: 'Keyboard', specification: 'Wireless, Mechanical, Aluminum', guarantee: { start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00' }, price: [{ value: 160, symbol: 'USD', isDefault: 0 }, { value: 4160, symbol: 'UAH', isDefault: 1 }], orderId: 4, status: 'repair', date: '2024-04-12 11:20:00' },
+  { id: 49, serialNumber: 4001004, isNew: 1, photo: 'monitor.png', title: 'Corsair K100 RGB', type: 'Keyboard', specification: 'Wired, Optical, RGB', guarantee: { start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00' }, price: [{ value: 220, symbol: 'USD', isDefault: 0 }, { value: 5720, symbol: 'UAH', isDefault: 1 }], orderId: 4, status: 'free', date: '2024-04-12 11:20:00' },
+  { id: 50, serialNumber: 4001005, isNew: 1, photo: 'monitor.png', title: 'SteelSeries Apex Pro TKL', type: 'Keyboard', specification: 'Wired, OmniPoint, RGB', guarantee: { start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00' }, price: [{ value: 190, symbol: 'USD', isDefault: 0 }, { value: 4940, symbol: 'UAH', isDefault: 1 }], orderId: 4, status: 'free', date: '2024-04-12 11:20:00' },
+  { id: 51, serialNumber: 4001006, isNew: 1, photo: 'monitor.png', title: 'Ducky One 3 SF', type: 'Keyboard', specification: 'Wired, Mechanical, Hot-swap', guarantee: { start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00' }, price: [{ value: 110, symbol: 'USD', isDefault: 0 }, { value: 2860, symbol: 'UAH', isDefault: 1 }], orderId: 4, status: 'free', date: '2024-04-12 11:20:00' },
+  { id: 52, serialNumber: 4001007, isNew: 0, photo: 'monitor.png', title: 'Wooting 60HE+', type: 'Keyboard', specification: 'Wired, Analog Hall Effect, RGB', guarantee: { start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00' }, price: [{ value: 175, symbol: 'USD', isDefault: 0 }, { value: 4550, symbol: 'UAH', isDefault: 1 }], orderId: 4, status: 'free', date: '2024-04-12 11:20:00' },
+  { id: 53, serialNumber: 4001008, isNew: 1, photo: 'monitor.png', title: 'Drop CTRL V2', type: 'Keyboard', specification: 'Wired, Hot-swap, USB-C', guarantee: { start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00' }, price: [{ value: 150, symbol: 'USD', isDefault: 0 }, { value: 3900, symbol: 'UAH', isDefault: 1 }], orderId: 4, status: 'repair', date: '2024-04-12 11:20:00' },
+  { id: 54, serialNumber: 4001009, isNew: 0, photo: 'monitor.png', title: 'HHKB Professional Hybrid Type-S', type: 'Keyboard', specification: 'Wireless, Topre 45g, Silent', guarantee: { start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00' }, price: [{ value: 280, symbol: 'USD', isDefault: 0 }, { value: 7280, symbol: 'UAH', isDefault: 1 }], orderId: 4, status: 'free', date: '2024-04-12 11:20:00' },
+  { id: 55, serialNumber: 4001010, isNew: 1, photo: 'monitor.png', title: 'Logitech G Pro X TKL', type: 'Keyboard', specification: 'Wired, Clicky, RGB', guarantee: { start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00' }, price: [{ value: 130, symbol: 'USD', isDefault: 0 }, { value: 3380, symbol: 'UAH', isDefault: 1 }], orderId: 4, status: 'free', date: '2024-04-12 11:20:00' },
+  { id: 56, serialNumber: 4001011, isNew: 1, photo: 'monitor.png', title: 'Razer Huntsman V3 Pro', type: 'Keyboard', specification: 'Wired, Analog Optical, RGB', guarantee: { start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 4, status: 'free', date: '2024-04-12 11:20:00' },
+  { id: 57, serialNumber: 4001012, isNew: 0, photo: 'monitor.png', title: 'Varmilo VA87M', type: 'Keyboard', specification: 'Wired, Cherry MX, PBT Keycaps', guarantee: { start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00' }, price: [{ value: 120, symbol: 'USD', isDefault: 0 }, { value: 3120, symbol: 'UAH', isDefault: 1 }], orderId: 4, status: 'free', date: '2024-04-12 11:20:00' },
+  { id: 58, serialNumber: 4001013, isNew: 1, photo: 'monitor.png', title: 'NuPhy Air96 V2', type: 'Keyboard', specification: 'Wireless, Low Profile, Gasket', guarantee: { start: '2024-04-12 11:20:00', end: '2026-04-12 11:20:00' }, price: [{ value: 140, symbol: 'USD', isDefault: 0 }, { value: 3640, symbol: 'UAH', isDefault: 1 }], orderId: 4, status: 'free', date: '2024-04-12 11:20:00' },
+
+  // Order 5 - Headset (11 products)
+  { id: 59, serialNumber: 5001001, isNew: 1, photo: 'monitor.png', title: 'SteelSeries Arctis Nova Pro Wireless', type: 'Headset', specification: 'Wireless, ANC, Hi-Res', guarantee: { start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00' }, price: [{ value: 300, symbol: 'USD', isDefault: 0 }, { value: 7800, symbol: 'UAH', isDefault: 1 }], orderId: 5, status: 'free', date: '2024-05-18 16:45:00' },
+  { id: 60, serialNumber: 5001002, isNew: 0, photo: 'monitor.png', title: 'Logitech G Pro X 2 Lightspeed', type: 'Headset', specification: 'Wireless, Blue VO!CE', guarantee: { start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 5, status: 'free', date: '2024-05-18 16:45:00' },
+  { id: 61, serialNumber: 5001003, isNew: 1, photo: 'monitor.png', title: 'Beyerdynamic DT 990 Pro', type: 'Headset', specification: 'Wired, Open-back, 250 Ohm', guarantee: { start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00' }, price: [{ value: 150, symbol: 'USD', isDefault: 0 }, { value: 3900, symbol: 'UAH', isDefault: 1 }], orderId: 5, status: 'repair', date: '2024-05-18 16:45:00' },
+  { id: 62, serialNumber: 5001004, isNew: 1, photo: 'monitor.png', title: 'Sony WH-1000XM5', type: 'Headset', specification: 'Wireless, ANC, LDAC', guarantee: { start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00' }, price: [{ value: 350, symbol: 'USD', isDefault: 0 }, { value: 9100, symbol: 'UAH', isDefault: 1 }], orderId: 5, status: 'free', date: '2024-05-18 16:45:00' },
+  { id: 63, serialNumber: 5001005, isNew: 0, photo: 'monitor.png', title: 'HyperX Cloud Alpha Wireless', type: 'Headset', specification: 'Wireless, 300h battery', guarantee: { start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00' }, price: [{ value: 180, symbol: 'USD', isDefault: 0 }, { value: 4680, symbol: 'UAH', isDefault: 1 }], orderId: 5, status: 'free', date: '2024-05-18 16:45:00' },
+  { id: 64, serialNumber: 5001006, isNew: 1, photo: 'monitor.png', title: 'Razer BlackShark V2 Pro 2023', type: 'Headset', specification: 'Wireless, HyperClear Super Wideband', guarantee: { start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 5, status: 'free', date: '2024-05-18 16:45:00' },
+  { id: 65, serialNumber: 5001007, isNew: 1, photo: 'monitor.png', title: 'Sennheiser HD 560S', type: 'Headset', specification: 'Wired, Open-back, 120 Ohm', guarantee: { start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00' }, price: [{ value: 175, symbol: 'USD', isDefault: 0 }, { value: 4550, symbol: 'UAH', isDefault: 1 }], orderId: 5, status: 'free', date: '2024-05-18 16:45:00' },
+  { id: 66, serialNumber: 5001008, isNew: 0, photo: 'monitor.png', title: 'ASUS ROG Delta S Wireless', type: 'Headset', specification: 'Wireless, AI Noise Cancel, 2.4GHz', guarantee: { start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00' }, price: [{ value: 220, symbol: 'USD', isDefault: 0 }, { value: 5720, symbol: 'UAH', isDefault: 1 }], orderId: 5, status: 'repair', date: '2024-05-18 16:45:00' },
+  { id: 67, serialNumber: 5001009, isNew: 1, photo: 'monitor.png', title: 'Corsair Virtuoso RGB Wireless XT', type: 'Headset', specification: 'Wireless, Dolby Atmos, USB-C', guarantee: { start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00' }, price: [{ value: 230, symbol: 'USD', isDefault: 0 }, { value: 5980, symbol: 'UAH', isDefault: 1 }], orderId: 5, status: 'free', date: '2024-05-18 16:45:00' },
+  { id: 68, serialNumber: 5001010, isNew: 0, photo: 'monitor.png', title: 'Audeze Maxwell Wireless', type: 'Headset', specification: 'Wireless, Planar Magnetic, Lossless', guarantee: { start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00' }, price: [{ value: 300, symbol: 'USD', isDefault: 0 }, { value: 7800, symbol: 'UAH', isDefault: 1 }], orderId: 5, status: 'free', date: '2024-05-18 16:45:00' },
+  { id: 69, serialNumber: 5001011, isNew: 1, photo: 'monitor.png', title: 'JBL Quantum 910 Wireless', type: 'Headset', specification: 'Wireless, ANC, Head Tracking', guarantee: { start: '2024-05-18 16:45:00', end: '2026-05-18 16:45:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 5, status: 'free', date: '2024-05-18 16:45:00' },
+
+  // Order 6 - CPU (20 products)
+  { id: 70, serialNumber: 6001001, isNew: 1, photo: 'monitor.png', title: 'Intel Core i9-14900K', type: 'CPU', specification: '24 Cores, 5.8GHz, LGA1700', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 550, symbol: 'USD', isDefault: 0 }, { value: 14300, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 71, serialNumber: 6001002, isNew: 1, photo: 'monitor.png', title: 'AMD Ryzen 9 7950X', type: 'CPU', specification: '16 Cores, 5.7GHz, AM5', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 600, symbol: 'USD', isDefault: 0 }, { value: 15600, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 72, serialNumber: 6001003, isNew: 1, photo: 'monitor.png', title: 'Intel Core i7-14700K', type: 'CPU', specification: '20 Cores, 5.6GHz, LGA1700', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 380, symbol: 'USD', isDefault: 0 }, { value: 9880, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 73, serialNumber: 6001004, isNew: 0, photo: 'monitor.png', title: 'AMD Ryzen 7 7800X3D', type: 'CPU', specification: '8 Cores, 5.0GHz, 3D V-Cache', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 420, symbol: 'USD', isDefault: 0 }, { value: 10920, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 74, serialNumber: 6001005, isNew: 1, photo: 'monitor.png', title: 'Intel Core i5-14600K', type: 'CPU', specification: '14 Cores, 5.3GHz, LGA1700', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 300, symbol: 'USD', isDefault: 0 }, { value: 7800, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'repair', date: '2024-06-03 10:00:00' },
+  { id: 75, serialNumber: 6001006, isNew: 1, photo: 'monitor.png', title: 'AMD Ryzen 9 7900X', type: 'CPU', specification: '12 Cores, 5.6GHz, AM5', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 450, symbol: 'USD', isDefault: 0 }, { value: 11700, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 76, serialNumber: 6001007, isNew: 0, photo: 'monitor.png', title: 'Intel Core i9-13900KS', type: 'CPU', specification: '24 Cores, 6.0GHz, LGA1700', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 700, symbol: 'USD', isDefault: 0 }, { value: 18200, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 77, serialNumber: 6001008, isNew: 1, photo: 'monitor.png', title: 'AMD Ryzen 5 7600X', type: 'CPU', specification: '6 Cores, 5.3GHz, AM5', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 250, symbol: 'USD', isDefault: 0 }, { value: 6500, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 78, serialNumber: 6001009, isNew: 1, photo: 'monitor.png', title: 'Intel Core i7-13700K', type: 'CPU', specification: '16 Cores, 5.4GHz, LGA1700', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 350, symbol: 'USD', isDefault: 0 }, { value: 9100, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 79, serialNumber: 6001010, isNew: 0, photo: 'monitor.png', title: 'AMD Ryzen 9 7950X3D', type: 'CPU', specification: '16 Cores, 5.7GHz, 3D V-Cache', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 700, symbol: 'USD', isDefault: 0 }, { value: 18200, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'repair', date: '2024-06-03 10:00:00' },
+  { id: 80, serialNumber: 6001011, isNew: 1, photo: 'monitor.png', title: 'Intel Core Ultra 9 285K', type: 'CPU', specification: '24 Cores, 5.7GHz, Arrow Lake', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 580, symbol: 'USD', isDefault: 0 }, { value: 15080, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 81, serialNumber: 6001012, isNew: 1, photo: 'monitor.png', title: 'AMD Ryzen 7 9700X', type: 'CPU', specification: '8 Cores, 5.5GHz, Zen 5, AM5', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 360, symbol: 'USD', isDefault: 0 }, { value: 9360, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 82, serialNumber: 6001013, isNew: 0, photo: 'monitor.png', title: 'Intel Core i5-13600K', type: 'CPU', specification: '14 Cores, 5.1GHz, LGA1700', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 280, symbol: 'USD', isDefault: 0 }, { value: 7280, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 83, serialNumber: 6001014, isNew: 1, photo: 'monitor.png', title: 'AMD Ryzen 5 9600X', type: 'CPU', specification: '6 Cores, 5.4GHz, Zen 5, AM5', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 270, symbol: 'USD', isDefault: 0 }, { value: 7020, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 84, serialNumber: 6001015, isNew: 1, photo: 'monitor.png', title: 'Intel Core Ultra 7 265K', type: 'CPU', specification: '20 Cores, 5.5GHz, Arrow Lake', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 400, symbol: 'USD', isDefault: 0 }, { value: 10400, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 85, serialNumber: 6001016, isNew: 0, photo: 'monitor.png', title: 'AMD Ryzen 9 9950X', type: 'CPU', specification: '16 Cores, 5.7GHz, Zen 5, AM5', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 650, symbol: 'USD', isDefault: 0 }, { value: 16900, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'repair', date: '2024-06-03 10:00:00' },
+  { id: 86, serialNumber: 6001017, isNew: 1, photo: 'monitor.png', title: 'Intel Core i9-14900KF', type: 'CPU', specification: '24 Cores, 6.0GHz, No iGPU', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 520, symbol: 'USD', isDefault: 0 }, { value: 13520, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 87, serialNumber: 6001018, isNew: 1, photo: 'monitor.png', title: 'AMD Ryzen Threadripper 7960X', type: 'CPU', specification: '24 Cores, 5.3GHz, TRX50', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 1400, symbol: 'USD', isDefault: 0 }, { value: 36400, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 88, serialNumber: 6001019, isNew: 0, photo: 'monitor.png', title: 'Intel Xeon W9-3595X', type: 'CPU', specification: '60 Cores, 4.8GHz, LGA4677', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 5500, symbol: 'USD', isDefault: 0 }, { value: 143000, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+  { id: 89, serialNumber: 6001020, isNew: 1, photo: 'monitor.png', title: 'AMD EPYC 9654', type: 'CPU', specification: '96 Cores, 3.7GHz, Genoa', guarantee: { start: '2024-06-03 10:00:00', end: '2027-06-03 10:00:00' }, price: [{ value: 11000, symbol: 'USD', isDefault: 0 }, { value: 286000, symbol: 'UAH', isDefault: 1 }], orderId: 6, status: 'free', date: '2024-06-03 10:00:00' },
+
+  // Order 7 - GPU (17 products)
+  { id: 90, serialNumber: 7001001, isNew: 1, photo: 'monitor.png', title: 'NVIDIA RTX 4090 Founders Edition', type: 'GPU', specification: '24GB GDDR6X, 16384 Cores', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 1600, symbol: 'USD', isDefault: 0 }, { value: 41600, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'free', date: '2024-07-20 08:00:00' },
+  { id: 91, serialNumber: 7001002, isNew: 1, photo: 'monitor.png', title: 'AMD Radeon RX 7900 XTX', type: 'GPU', specification: '24GB GDDR6, 6144 Cores', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 900, symbol: 'USD', isDefault: 0 }, { value: 23400, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'free', date: '2024-07-20 08:00:00' },
+  { id: 92, serialNumber: 7001003, isNew: 1, photo: 'monitor.png', title: 'NVIDIA RTX 4080 Super', type: 'GPU', specification: '16GB GDDR6X, 10240 Cores', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 1000, symbol: 'USD', isDefault: 0 }, { value: 26000, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'free', date: '2024-07-20 08:00:00' },
+  { id: 93, serialNumber: 7001004, isNew: 0, photo: 'monitor.png', title: 'AMD Radeon RX 7800 XT', type: 'GPU', specification: '16GB GDDR6, 3840 Cores', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 500, symbol: 'USD', isDefault: 0 }, { value: 13000, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'repair', date: '2024-07-20 08:00:00' },
+  { id: 94, serialNumber: 7001005, isNew: 1, photo: 'monitor.png', title: 'NVIDIA RTX 4070 Ti Super', type: 'GPU', specification: '16GB GDDR6X, 8448 Cores', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 800, symbol: 'USD', isDefault: 0 }, { value: 20800, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'free', date: '2024-07-20 08:00:00' },
+  { id: 95, serialNumber: 7001006, isNew: 0, photo: 'monitor.png', title: 'AMD Radeon RX 7600 XT', type: 'GPU', specification: '16GB GDDR6, 2048 Cores', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 330, symbol: 'USD', isDefault: 0 }, { value: 8580, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'free', date: '2024-07-20 08:00:00' },
+  { id: 96, serialNumber: 7001007, isNew: 1, photo: 'monitor.png', title: 'NVIDIA RTX 4060 Ti', type: 'GPU', specification: '16GB GDDR6, 4352 Cores', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 450, symbol: 'USD', isDefault: 0 }, { value: 11700, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'free', date: '2024-07-20 08:00:00' },
+  { id: 97, serialNumber: 7001008, isNew: 1, photo: 'monitor.png', title: 'ASUS ROG Strix RTX 4090 OC', type: 'GPU', specification: '24GB GDDR6X, OC Edition', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 2000, symbol: 'USD', isDefault: 0 }, { value: 52000, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'free', date: '2024-07-20 08:00:00' },
+  { id: 98, serialNumber: 7001009, isNew: 0, photo: 'monitor.png', title: 'Sapphire Nitro+ RX 7900 XTX', type: 'GPU', specification: '24GB GDDR6, Vapor-X Cooling', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 1050, symbol: 'USD', isDefault: 0 }, { value: 27300, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'repair', date: '2024-07-20 08:00:00' },
+  { id: 99, serialNumber: 7001010, isNew: 1, photo: 'monitor.png', title: 'MSI Gaming X Trio RTX 4080', type: 'GPU', specification: '16GB GDDR6X, Triple Fan', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 1100, symbol: 'USD', isDefault: 0 }, { value: 28600, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'free', date: '2024-07-20 08:00:00' },
+  { id: 100, serialNumber: 7001011, isNew: 1, photo: 'monitor.png', title: 'Gigabyte Aorus Master RTX 4090', type: 'GPU', specification: '24GB GDDR6X, Windforce Cooling', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 1900, symbol: 'USD', isDefault: 0 }, { value: 49400, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'free', date: '2024-07-20 08:00:00' },
+  { id: 101, serialNumber: 7001012, isNew: 0, photo: 'monitor.png', title: 'PowerColor Hellhound RX 7900 XT', type: 'GPU', specification: '20GB GDDR6, Dual Fan', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 750, symbol: 'USD', isDefault: 0 }, { value: 19500, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'free', date: '2024-07-20 08:00:00' },
+  { id: 102, serialNumber: 7001013, isNew: 1, photo: 'monitor.png', title: 'NVIDIA RTX 4090 Ti (Titan)', type: 'GPU', specification: '48GB GDDR7, Workstation', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 3500, symbol: 'USD', isDefault: 0 }, { value: 91000, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'free', date: '2024-07-20 08:00:00' },
+  { id: 103, serialNumber: 7001014, isNew: 1, photo: 'monitor.png', title: 'AMD Radeon Pro W7900', type: 'GPU', specification: '48GB GDDR6, ECC, Workstation', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 3900, symbol: 'USD', isDefault: 0 }, { value: 101400, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'free', date: '2024-07-20 08:00:00' },
+  { id: 104, serialNumber: 7001015, isNew: 0, photo: 'monitor.png', title: 'Palit GameRock RTX 4080 Super', type: 'GPU', specification: '16GB GDDR6X, Quad Fan', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 1050, symbol: 'USD', isDefault: 0 }, { value: 27300, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'free', date: '2024-07-20 08:00:00' },
+  { id: 105, serialNumber: 7001016, isNew: 1, photo: 'monitor.png', title: 'Zotac Gaming AMP Extreme RTX 4090', type: 'GPU', specification: '24GB GDDR6X, IceStorm Cooling', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 2100, symbol: 'USD', isDefault: 0 }, { value: 54600, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'repair', date: '2024-07-20 08:00:00' },
+  { id: 106, serialNumber: 7001017, isNew: 0, photo: 'monitor.png', title: 'XFX Speedster Merc 310 RX 7900 XTX', type: 'GPU', specification: '24GB GDDR6, Quad Fan', guarantee: { start: '2024-07-20 08:00:00', end: '2027-07-20 08:00:00' }, price: [{ value: 1000, symbol: 'USD', isDefault: 0 }, { value: 26000, symbol: 'UAH', isDefault: 1 }], orderId: 7, status: 'free', date: '2024-07-20 08:00:00' },
+
+  // Order 8 - RAM (14 products)
+  { id: 107, serialNumber: 8001001, isNew: 1, photo: 'monitor.png', title: 'Corsair Dominator Platinum DDR5-6000 64GB', type: 'RAM', specification: 'DDR5, 2x32GB, CL30, 6000MHz', guarantee: { start: '2024-08-08 12:00:00', end: '2027-08-08 12:00:00' }, price: [{ value: 250, symbol: 'USD', isDefault: 0 }, { value: 6500, symbol: 'UAH', isDefault: 1 }], orderId: 8, status: 'free', date: '2024-08-08 12:00:00' },
+  { id: 108, serialNumber: 8001002, isNew: 1, photo: 'monitor.png', title: 'G.Skill Trident Z5 RGB DDR5-7200 32GB', type: 'RAM', specification: 'DDR5, 2x16GB, CL34, 7200MHz', guarantee: { start: '2024-08-08 12:00:00', end: '2027-08-08 12:00:00' }, price: [{ value: 180, symbol: 'USD', isDefault: 0 }, { value: 4680, symbol: 'UAH', isDefault: 1 }], orderId: 8, status: 'free', date: '2024-08-08 12:00:00' },
+  { id: 109, serialNumber: 8001003, isNew: 0, photo: 'monitor.png', title: 'Kingston Fury Beast DDR5-5600 32GB', type: 'RAM', specification: 'DDR5, 2x16GB, CL36, 5600MHz', guarantee: { start: '2024-08-08 12:00:00', end: '2027-08-08 12:00:00' }, price: [{ value: 120, symbol: 'USD', isDefault: 0 }, { value: 3120, symbol: 'UAH', isDefault: 1 }], orderId: 8, status: 'free', date: '2024-08-08 12:00:00' },
+  { id: 110, serialNumber: 8001004, isNew: 1, photo: 'monitor.png', title: 'Crucial Pro DDR5-5600 64GB', type: 'RAM', specification: 'DDR5, 2x32GB, CL46, 5600MHz', guarantee: { start: '2024-08-08 12:00:00', end: '2027-08-08 12:00:00' }, price: [{ value: 160, symbol: 'USD', isDefault: 0 }, { value: 4160, symbol: 'UAH', isDefault: 1 }], orderId: 8, status: 'repair', date: '2024-08-08 12:00:00' },
+  { id: 111, serialNumber: 8001005, isNew: 1, photo: 'monitor.png', title: 'Patriot Viper Xtreme DDR5-7600 32GB', type: 'RAM', specification: 'DDR5, 2x16GB, CL36, 7600MHz', guarantee: { start: '2024-08-08 12:00:00', end: '2027-08-08 12:00:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 8, status: 'free', date: '2024-08-08 12:00:00' },
+  { id: 112, serialNumber: 8001006, isNew: 0, photo: 'monitor.png', title: 'TeamGroup T-Force Delta RGB DDR5-6000 32GB', type: 'RAM', specification: 'DDR5, 2x16GB, CL38, 6000MHz', guarantee: { start: '2024-08-08 12:00:00', end: '2027-08-08 12:00:00' }, price: [{ value: 140, symbol: 'USD', isDefault: 0 }, { value: 3640, symbol: 'UAH', isDefault: 1 }], orderId: 8, status: 'free', date: '2024-08-08 12:00:00' },
+  { id: 113, serialNumber: 8001007, isNew: 1, photo: 'monitor.png', title: 'G.Skill Flare X5 DDR5-6000 32GB', type: 'RAM', specification: 'DDR5, 2x16GB, CL30, AMD EXPO', guarantee: { start: '2024-08-08 12:00:00', end: '2027-08-08 12:00:00' }, price: [{ value: 130, symbol: 'USD', isDefault: 0 }, { value: 3380, symbol: 'UAH', isDefault: 1 }], orderId: 8, status: 'free', date: '2024-08-08 12:00:00' },
+  { id: 114, serialNumber: 8001008, isNew: 1, photo: 'monitor.png', title: 'Corsair Vengeance DDR5-5600 64GB', type: 'RAM', specification: 'DDR5, 2x32GB, CL40, 5600MHz', guarantee: { start: '2024-08-08 12:00:00', end: '2027-08-08 12:00:00' }, price: [{ value: 150, symbol: 'USD', isDefault: 0 }, { value: 3900, symbol: 'UAH', isDefault: 1 }], orderId: 8, status: 'free', date: '2024-08-08 12:00:00' },
+  { id: 115, serialNumber: 8001009, isNew: 0, photo: 'monitor.png', title: 'SK Hynix Platinum HBX5 DDR5-5600 32GB', type: 'RAM', specification: 'DDR5, 2x16GB, Low Latency', guarantee: { start: '2024-08-08 12:00:00', end: '2027-08-08 12:00:00' }, price: [{ value: 110, symbol: 'USD', isDefault: 0 }, { value: 2860, symbol: 'UAH', isDefault: 1 }], orderId: 8, status: 'repair', date: '2024-08-08 12:00:00' },
+  { id: 116, serialNumber: 8001010, isNew: 1, photo: 'monitor.png', title: 'Thermaltake Toughram XG RGB DDR5-6200', type: 'RAM', specification: 'DDR5, 2x16GB, LCD Display', guarantee: { start: '2024-08-08 12:00:00', end: '2027-08-08 12:00:00' }, price: [{ value: 170, symbol: 'USD', isDefault: 0 }, { value: 4420, symbol: 'UAH', isDefault: 1 }], orderId: 8, status: 'free', date: '2024-08-08 12:00:00' },
+  { id: 117, serialNumber: 8001011, isNew: 1, photo: 'monitor.png', title: 'Kingston Fury Renegade DDR5-7200 64GB', type: 'RAM', specification: 'DDR5, 2x32GB, CL38, Intel XMP 3.0', guarantee: { start: '2024-08-08 12:00:00', end: '2027-08-08 12:00:00' }, price: [{ value: 300, symbol: 'USD', isDefault: 0 }, { value: 7800, symbol: 'UAH', isDefault: 1 }], orderId: 8, status: 'free', date: '2024-08-08 12:00:00' },
+  { id: 118, serialNumber: 8001012, isNew: 0, photo: 'monitor.png', title: 'Adata XPG Lancer Blade DDR5-6000 32GB', type: 'RAM', specification: 'DDR5, 2x16GB, Slim Profile', guarantee: { start: '2024-08-08 12:00:00', end: '2027-08-08 12:00:00' }, price: [{ value: 125, symbol: 'USD', isDefault: 0 }, { value: 3250, symbol: 'UAH', isDefault: 1 }], orderId: 8, status: 'free', date: '2024-08-08 12:00:00' },
+  { id: 119, serialNumber: 8001013, isNew: 1, photo: 'monitor.png', title: 'Mushkin Redline DDR5-6400 96GB', type: 'RAM', specification: 'DDR5, 2x48GB, CL32, 6400MHz', guarantee: { start: '2024-08-08 12:00:00', end: '2027-08-08 12:00:00' }, price: [{ value: 400, symbol: 'USD', isDefault: 0 }, { value: 10400, symbol: 'UAH', isDefault: 1 }], orderId: 8, status: 'free', date: '2024-08-08 12:00:00' },
+  { id: 120, serialNumber: 8001014, isNew: 0, photo: 'monitor.png', title: 'Oloy Blade RGB DDR5-7200 32GB', type: 'RAM', specification: 'DDR5, 2x16GB, CL34, RGB', guarantee: { start: '2024-08-08 12:00:00', end: '2027-08-08 12:00:00' }, price: [{ value: 145, symbol: 'USD', isDefault: 0 }, { value: 3770, symbol: 'UAH', isDefault: 1 }], orderId: 8, status: 'free', date: '2024-08-08 12:00:00' },
+
+  // Order 9 - SSD (16 products)
+  { id: 121, serialNumber: 9001001, isNew: 1, photo: 'monitor.png', title: 'Samsung 990 Pro 2TB NVMe', type: 'SSD', specification: 'M.2, PCIe 4.0, 7450MB/s Read', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 180, symbol: 'USD', isDefault: 0 }, { value: 4680, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'free', date: '2024-09-14 09:00:00' },
+  { id: 122, serialNumber: 9001002, isNew: 1, photo: 'monitor.png', title: 'WD Black SN850X 2TB', type: 'SSD', specification: 'M.2, PCIe 4.0, 7300MB/s Read', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 170, symbol: 'USD', isDefault: 0 }, { value: 4420, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'free', date: '2024-09-14 09:00:00' },
+  { id: 123, serialNumber: 9001003, isNew: 0, photo: 'monitor.png', title: 'Seagate FireCuda 530 4TB', type: 'SSD', specification: 'M.2, PCIe 4.0, 7300MB/s Read', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 350, symbol: 'USD', isDefault: 0 }, { value: 9100, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'repair', date: '2024-09-14 09:00:00' },
+  { id: 124, serialNumber: 9001004, isNew: 1, photo: 'monitor.png', title: 'Crucial T700 2TB PCIe 5.0', type: 'SSD', specification: 'M.2, PCIe 5.0, 12400MB/s Read', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 250, symbol: 'USD', isDefault: 0 }, { value: 6500, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'free', date: '2024-09-14 09:00:00' },
+  { id: 125, serialNumber: 9001005, isNew: 1, photo: 'monitor.png', title: 'Corsair MP700 Pro 2TB PCIe 5.0', type: 'SSD', specification: 'M.2, PCIe 5.0, 12400MB/s Read', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 280, symbol: 'USD', isDefault: 0 }, { value: 7280, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'free', date: '2024-09-14 09:00:00' },
+  { id: 126, serialNumber: 9001006, isNew: 0, photo: 'monitor.png', title: 'Sabrent Rocket 4 Plus-G 4TB', type: 'SSD', specification: 'M.2, PCIe 4.0, 7200MB/s Read', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 400, symbol: 'USD', isDefault: 0 }, { value: 10400, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'free', date: '2024-09-14 09:00:00' },
+  { id: 127, serialNumber: 9001007, isNew: 1, photo: 'monitor.png', title: 'Kingston Fury Renegade 2TB', type: 'SSD', specification: 'M.2, PCIe 4.0, 7300MB/s Read', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 165, symbol: 'USD', isDefault: 0 }, { value: 4290, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'free', date: '2024-09-14 09:00:00' },
+  { id: 128, serialNumber: 9001008, isNew: 1, photo: 'monitor.png', title: 'ADATA Legend 960 Max 2TB', type: 'SSD', specification: 'M.2, PCIe 4.0, 7400MB/s Read', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 140, symbol: 'USD', isDefault: 0 }, { value: 3640, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'repair', date: '2024-09-14 09:00:00' },
+  { id: 129, serialNumber: 9001009, isNew: 0, photo: 'monitor.png', title: 'Transcend MTE250H 2TB', type: 'SSD', specification: 'M.2, PCIe 4.0, 7200MB/s Read', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 130, symbol: 'USD', isDefault: 0 }, { value: 3380, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'free', date: '2024-09-14 09:00:00' },
+  { id: 130, serialNumber: 9001010, isNew: 1, photo: 'monitor.png', title: 'MSI Spatium M580 2TB PCIe 5.0', type: 'SSD', specification: 'M.2, PCIe 5.0, 12400MB/s Read', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 300, symbol: 'USD', isDefault: 0 }, { value: 7800, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'free', date: '2024-09-14 09:00:00' },
+  { id: 131, serialNumber: 9001011, isNew: 1, photo: 'monitor.png', title: 'Gigabyte Aorus Gen5 10000 2TB', type: 'SSD', specification: 'M.2, PCIe 5.0, 10000MB/s Read', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 260, symbol: 'USD', isDefault: 0 }, { value: 6760, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'free', date: '2024-09-14 09:00:00' },
+  { id: 132, serialNumber: 9001012, isNew: 0, photo: 'monitor.png', title: 'Lexar NM790 4TB', type: 'SSD', specification: 'M.2, PCIe 4.0, 7400MB/s Read', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 320, symbol: 'USD', isDefault: 0 }, { value: 8320, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'free', date: '2024-09-14 09:00:00' },
+  { id: 133, serialNumber: 9001013, isNew: 1, photo: 'monitor.png', title: 'TeamGroup MP44L 2TB', type: 'SSD', specification: 'M.2, PCIe 4.0, 5000MB/s Read', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 100, symbol: 'USD', isDefault: 0 }, { value: 2600, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'free', date: '2024-09-14 09:00:00' },
+  { id: 134, serialNumber: 9001014, isNew: 0, photo: 'monitor.png', title: 'Solidigm P44 Pro 2TB', type: 'SSD', specification: 'M.2, PCIe 4.0, 7000MB/s Read', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 155, symbol: 'USD', isDefault: 0 }, { value: 4030, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'repair', date: '2024-09-14 09:00:00' },
+  { id: 135, serialNumber: 9001015, isNew: 1, photo: 'monitor.png', title: 'Samsung 990 EVO 2TB', type: 'SSD', specification: 'M.2, PCIe 4.0/5.0 Hybrid, 5000MB/s', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 120, symbol: 'USD', isDefault: 0 }, { value: 3120, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'free', date: '2024-09-14 09:00:00' },
+  { id: 136, serialNumber: 9001016, isNew: 1, photo: 'monitor.png', title: 'WD Black SN770M 1TB', type: 'SSD', specification: 'M.2 2230, PCIe 4.0, 5150MB/s', guarantee: { start: '2024-09-14 09:00:00', end: '2029-09-14 09:00:00' }, price: [{ value: 90, symbol: 'USD', isDefault: 0 }, { value: 2340, symbol: 'UAH', isDefault: 1 }], orderId: 9, status: 'free', date: '2024-09-14 09:00:00' },
+
+  // Order 10 - Motherboard (12 products)
+  { id: 137, serialNumber: 10001001, isNew: 1, photo: 'monitor.png', title: 'ASUS ROG Maximus Z790 Hero', type: 'Motherboard', specification: 'Z790, LGA1700, DDR5, WiFi 6E', guarantee: { start: '2024-10-01 11:00:00', end: '2027-10-01 11:00:00' }, price: [{ value: 600, symbol: 'USD', isDefault: 0 }, { value: 15600, symbol: 'UAH', isDefault: 1 }], orderId: 10, status: 'free', date: '2024-10-01 11:00:00' },
+  { id: 138, serialNumber: 10001002, isNew: 1, photo: 'monitor.png', title: 'MSI MEG X670E Ace', type: 'Motherboard', specification: 'X670E, AM5, DDR5, WiFi 6E', guarantee: { start: '2024-10-01 11:00:00', end: '2027-10-01 11:00:00' }, price: [{ value: 550, symbol: 'USD', isDefault: 0 }, { value: 14300, symbol: 'UAH', isDefault: 1 }], orderId: 10, status: 'free', date: '2024-10-01 11:00:00' },
+  { id: 139, serialNumber: 10001003, isNew: 0, photo: 'monitor.png', title: 'Gigabyte Z790 Aorus Master', type: 'Motherboard', specification: 'Z790, LGA1700, DDR5, 20+1 VRM', guarantee: { start: '2024-10-01 11:00:00', end: '2027-10-01 11:00:00' }, price: [{ value: 480, symbol: 'USD', isDefault: 0 }, { value: 12480, symbol: 'UAH', isDefault: 1 }], orderId: 10, status: 'repair', date: '2024-10-01 11:00:00' },
+  { id: 140, serialNumber: 10001004, isNew: 1, photo: 'monitor.png', title: 'ASRock X670E Taichi Carrara', type: 'Motherboard', specification: 'X670E, AM5, DDR5, WiFi 6E', guarantee: { start: '2024-10-01 11:00:00', end: '2027-10-01 11:00:00' }, price: [{ value: 500, symbol: 'USD', isDefault: 0 }, { value: 13000, symbol: 'UAH', isDefault: 1 }], orderId: 10, status: 'free', date: '2024-10-01 11:00:00' },
+  { id: 141, serialNumber: 10001005, isNew: 1, photo: 'monitor.png', title: 'ASUS ProArt Z790 Creator', type: 'Motherboard', specification: 'Z790, LGA1700, DDR5, Thunderbolt 4', guarantee: { start: '2024-10-01 11:00:00', end: '2027-10-01 11:00:00' }, price: [{ value: 450, symbol: 'USD', isDefault: 0 }, { value: 11700, symbol: 'UAH', isDefault: 1 }], orderId: 10, status: 'free', date: '2024-10-01 11:00:00' },
+  { id: 142, serialNumber: 10001006, isNew: 0, photo: 'monitor.png', title: 'MSI MPG B650E Carbon WiFi', type: 'Motherboard', specification: 'B650E, AM5, DDR5, WiFi 6E', guarantee: { start: '2024-10-01 11:00:00', end: '2027-10-01 11:00:00' }, price: [{ value: 280, symbol: 'USD', isDefault: 0 }, { value: 7280, symbol: 'UAH', isDefault: 1 }], orderId: 10, status: 'free', date: '2024-10-01 11:00:00' },
+  { id: 143, serialNumber: 10001007, isNew: 1, photo: 'monitor.png', title: 'Gigabyte B760M Aorus Elite AX', type: 'Motherboard', specification: 'B760, LGA1700, DDR5, WiFi 6E', guarantee: { start: '2024-10-01 11:00:00', end: '2027-10-01 11:00:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 10, status: 'free', date: '2024-10-01 11:00:00' },
+  { id: 144, serialNumber: 10001008, isNew: 1, photo: 'monitor.png', title: 'ASUS TUF Gaming X670E-Plus WiFi', type: 'Motherboard', specification: 'X670E, AM5, DDR5, ATX', guarantee: { start: '2024-10-01 11:00:00', end: '2027-10-01 11:00:00' }, price: [{ value: 320, symbol: 'USD', isDefault: 0 }, { value: 8320, symbol: 'UAH', isDefault: 1 }], orderId: 10, status: 'repair', date: '2024-10-01 11:00:00' },
+  { id: 145, serialNumber: 10001009, isNew: 0, photo: 'monitor.png', title: 'ASRock Z790 Taichi', type: 'Motherboard', specification: 'Z790, LGA1700, DDR5, 4x M.2', guarantee: { start: '2024-10-01 11:00:00', end: '2027-10-01 11:00:00' }, price: [{ value: 400, symbol: 'USD', isDefault: 0 }, { value: 10400, symbol: 'UAH', isDefault: 1 }], orderId: 10, status: 'free', date: '2024-10-01 11:00:00' },
+  { id: 146, serialNumber: 10001010, isNew: 1, photo: 'monitor.png', title: 'Gigabyte X670E Aorus Xtreme', type: 'Motherboard', specification: 'X670E, AM5, DDR5, 10GbE LAN', guarantee: { start: '2024-10-01 11:00:00', end: '2027-10-01 11:00:00' }, price: [{ value: 700, symbol: 'USD', isDefault: 0 }, { value: 18200, symbol: 'UAH', isDefault: 1 }], orderId: 10, status: 'free', date: '2024-10-01 11:00:00' },
+  { id: 147, serialNumber: 10001011, isNew: 1, photo: 'monitor.png', title: 'ASUS ROG Strix B650E-F Gaming WiFi', type: 'Motherboard', specification: 'B650E, AM5, DDR5, PCIe 5.0', guarantee: { start: '2024-10-01 11:00:00', end: '2027-10-01 11:00:00' }, price: [{ value: 260, symbol: 'USD', isDefault: 0 }, { value: 6760, symbol: 'UAH', isDefault: 1 }], orderId: 10, status: 'free', date: '2024-10-01 11:00:00' },
+  { id: 148, serialNumber: 10001012, isNew: 0, photo: 'monitor.png', title: 'MSI Z790 MEG Unify-X', type: 'Motherboard', specification: 'Z790, LGA1700, DDR5, 6x M.2', guarantee: { start: '2024-10-01 11:00:00', end: '2027-10-01 11:00:00' }, price: [{ value: 520, symbol: 'USD', isDefault: 0 }, { value: 13520, symbol: 'UAH', isDefault: 1 }], orderId: 10, status: 'free', date: '2024-10-01 11:00:00' },
+
+  // Order 11 - PSU (10 products)
+  { id: 149, serialNumber: 11001001, isNew: 1, photo: 'monitor.png', title: 'Corsair HX1500i', type: 'PSU', specification: '1500W, 80+ Platinum, Modular', guarantee: { start: '2024-11-05 14:00:00', end: '2031-11-05 14:00:00' }, price: [{ value: 350, symbol: 'USD', isDefault: 0 }, { value: 9100, symbol: 'UAH', isDefault: 1 }], orderId: 11, status: 'free', date: '2024-11-05 14:00:00' },
+  { id: 150, serialNumber: 11001002, isNew: 1, photo: 'monitor.png', title: 'be quiet! Dark Power 13 1000W', type: 'PSU', specification: '1000W, 80+ Titanium, Modular', guarantee: { start: '2024-11-05 14:00:00', end: '2031-11-05 14:00:00' }, price: [{ value: 280, symbol: 'USD', isDefault: 0 }, { value: 7280, symbol: 'UAH', isDefault: 1 }], orderId: 11, status: 'free', date: '2024-11-05 14:00:00' },
+  { id: 151, serialNumber: 11001003, isNew: 0, photo: 'monitor.png', title: 'Seasonic Prime TX-1300', type: 'PSU', specification: '1300W, 80+ Titanium, Fully Modular', guarantee: { start: '2024-11-05 14:00:00', end: '2034-11-05 14:00:00' }, price: [{ value: 400, symbol: 'USD', isDefault: 0 }, { value: 10400, symbol: 'UAH', isDefault: 1 }], orderId: 11, status: 'repair', date: '2024-11-05 14:00:00' },
+  { id: 152, serialNumber: 11001004, isNew: 1, photo: 'monitor.png', title: 'EVGA SuperNOVA 1000 G7', type: 'PSU', specification: '1000W, 80+ Gold, Fully Modular', guarantee: { start: '2024-11-05 14:00:00', end: '2034-11-05 14:00:00' }, price: [{ value: 220, symbol: 'USD', isDefault: 0 }, { value: 5720, symbol: 'UAH', isDefault: 1 }], orderId: 11, status: 'free', date: '2024-11-05 14:00:00' },
+  { id: 153, serialNumber: 11001005, isNew: 1, photo: 'monitor.png', title: 'Fractal Design Ion+ 2 Platinum 860W', type: 'PSU', specification: '860W, 80+ Platinum, Modular, Silent', guarantee: { start: '2024-11-05 14:00:00', end: '2034-11-05 14:00:00' }, price: [{ value: 180, symbol: 'USD', isDefault: 0 }, { value: 4680, symbol: 'UAH', isDefault: 1 }], orderId: 11, status: 'free', date: '2024-11-05 14:00:00' },
+  { id: 154, serialNumber: 11001006, isNew: 0, photo: 'monitor.png', title: 'Lian Li SP850 SFX', type: 'PSU', specification: '850W, 80+ Gold, SFX Form Factor', guarantee: { start: '2024-11-05 14:00:00', end: '2031-11-05 14:00:00' }, price: [{ value: 150, symbol: 'USD', isDefault: 0 }, { value: 3900, symbol: 'UAH', isDefault: 1 }], orderId: 11, status: 'free', date: '2024-11-05 14:00:00' },
+  { id: 155, serialNumber: 11001007, isNew: 1, photo: 'monitor.png', title: 'Corsair AX1600i', type: 'PSU', specification: '1600W, 80+ Titanium, Digital', guarantee: { start: '2024-11-05 14:00:00', end: '2034-11-05 14:00:00' }, price: [{ value: 480, symbol: 'USD', isDefault: 0 }, { value: 12480, symbol: 'UAH', isDefault: 1 }], orderId: 11, status: 'free', date: '2024-11-05 14:00:00' },
+  { id: 156, serialNumber: 11001008, isNew: 1, photo: 'monitor.png', title: 'Thermaltake Toughpower GF3 1350W', type: 'PSU', specification: '1350W, 80+ Gold, ATX 3.0', guarantee: { start: '2024-11-05 14:00:00', end: '2031-11-05 14:00:00' }, price: [{ value: 240, symbol: 'USD', isDefault: 0 }, { value: 6240, symbol: 'UAH', isDefault: 1 }], orderId: 11, status: 'repair', date: '2024-11-05 14:00:00' },
+  { id: 157, serialNumber: 11001009, isNew: 0, photo: 'monitor.png', title: 'Enermax Revolution D.F. X 1200W', type: 'PSU', specification: '1200W, 80+ Gold, Dual Fan', guarantee: { start: '2024-11-05 14:00:00', end: '2031-11-05 14:00:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 11, status: 'free', date: '2024-11-05 14:00:00' },
+  { id: 158, serialNumber: 11001010, isNew: 1, photo: 'monitor.png', title: 'FSP Hydro PTM Pro 1200W', type: 'PSU', specification: '1200W, 80+ Platinum, ATX 3.0', guarantee: { start: '2024-11-05 14:00:00', end: '2031-11-05 14:00:00' }, price: [{ value: 210, symbol: 'USD', isDefault: 0 }, { value: 5460, symbol: 'UAH', isDefault: 1 }], orderId: 11, status: 'free', date: '2024-11-05 14:00:00' },
+
+  // Order 12 - Cooling (22 products)
+  { id: 159, serialNumber: 12001001, isNew: 1, photo: 'monitor.png', title: 'Noctua NH-D15 chromax.black', type: 'Cooling', specification: 'Dual Tower, 2x140mm, LGA1700/AM5', guarantee: { start: '2024-12-01 10:00:00', end: '2030-12-01 10:00:00' }, price: [{ value: 110, symbol: 'USD', isDefault: 0 }, { value: 2860, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 160, serialNumber: 12001002, isNew: 1, photo: 'monitor.png', title: 'be quiet! Dark Rock Pro 5', type: 'Cooling', specification: 'Dual Tower, 2x135mm, LGA1700/AM5', guarantee: { start: '2024-12-01 10:00:00', end: '2030-12-01 10:00:00' }, price: [{ value: 100, symbol: 'USD', isDefault: 0 }, { value: 2600, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 161, serialNumber: 12001003, isNew: 0, photo: 'monitor.png', title: 'Corsair iCUE H170i Elite Capellix XT', type: 'Cooling', specification: '420mm AIO, 3x140mm, ARGB', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'repair', date: '2024-12-01 10:00:00' },
+  { id: 162, serialNumber: 12001004, isNew: 1, photo: 'monitor.png', title: 'EK-AIO 360 D-RGB', type: 'Cooling', specification: '360mm AIO, 3x120mm, D-RGB', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 150, symbol: 'USD', isDefault: 0 }, { value: 3900, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 163, serialNumber: 12001005, isNew: 1, photo: 'monitor.png', title: 'Thermalright Peerless Assassin 120 SE', type: 'Cooling', specification: 'Dual Tower, 2x120mm, LGA1700/AM5', guarantee: { start: '2024-12-01 10:00:00', end: '2030-12-01 10:00:00' }, price: [{ value: 50, symbol: 'USD', isDefault: 0 }, { value: 1300, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 164, serialNumber: 12001006, isNew: 0, photo: 'monitor.png', title: 'ARCTIC Liquid Freezer III 420', type: 'Cooling', specification: '420mm AIO, 3x140mm, VRM Fan', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 130, symbol: 'USD', isDefault: 0 }, { value: 3380, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 165, serialNumber: 12001007, isNew: 1, photo: 'monitor.png', title: 'DeepCool Assassin IV', type: 'Cooling', specification: 'Dual Tower, 2x140mm, LGA1700/AM5', guarantee: { start: '2024-12-01 10:00:00', end: '2030-12-01 10:00:00' }, price: [{ value: 90, symbol: 'USD', isDefault: 0 }, { value: 2340, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 166, serialNumber: 12001008, isNew: 1, photo: 'monitor.png', title: 'MSI MAG CoreLiquid E360', type: 'Cooling', specification: '360mm AIO, LCD Display, 3x120mm', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 160, symbol: 'USD', isDefault: 0 }, { value: 4160, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'repair', date: '2024-12-01 10:00:00' },
+  { id: 167, serialNumber: 12001009, isNew: 0, photo: 'monitor.png', title: 'LIAN LI GALAHAD II Trinity 360', type: 'Cooling', specification: '360mm AIO, 3x120mm, Infinity Mirror', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 180, symbol: 'USD', isDefault: 0 }, { value: 4680, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 168, serialNumber: 12001010, isNew: 1, photo: 'monitor.png', title: 'Scythe Fuma 3', type: 'Cooling', specification: 'Dual Tower, 2x120mm, Asymmetric', guarantee: { start: '2024-12-01 10:00:00', end: '2030-12-01 10:00:00' }, price: [{ value: 65, symbol: 'USD', isDefault: 0 }, { value: 1690, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 169, serialNumber: 12001011, isNew: 1, photo: 'monitor.png', title: 'ID-Cooling FrostFlow X 360', type: 'Cooling', specification: '360mm AIO, ARGB, 3x120mm', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 70, symbol: 'USD', isDefault: 0 }, { value: 1820, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 170, serialNumber: 12001012, isNew: 0, photo: 'monitor.png', title: 'EKWB EK-Quantum Velocity² D-RGB', type: 'Cooling', specification: 'Custom Loop WB, LGA1700/AM5', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 120, symbol: 'USD', isDefault: 0 }, { value: 3120, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 171, serialNumber: 12001013, isNew: 1, photo: 'monitor.png', title: 'Phanteks Glacier One 360 MPH', type: 'Cooling', specification: '360mm AIO, DRGB Pump Head', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 140, symbol: 'USD', isDefault: 0 }, { value: 3640, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 172, serialNumber: 12001014, isNew: 1, photo: 'monitor.png', title: 'Cooler Master Masterliquid PL360 Flux', type: 'Cooling', specification: '360mm AIO, Dual Chamber Pump', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 110, symbol: 'USD', isDefault: 0 }, { value: 2860, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 173, serialNumber: 12001015, isNew: 0, photo: 'monitor.png', title: 'Noctua NH-U12A chromax.black', type: 'Cooling', specification: 'Single Tower, 2x120mm, Premium', guarantee: { start: '2024-12-01 10:00:00', end: '2030-12-01 10:00:00' }, price: [{ value: 80, symbol: 'USD', isDefault: 0 }, { value: 2080, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'repair', date: '2024-12-01 10:00:00' },
+  { id: 174, serialNumber: 12001016, isNew: 1, photo: 'monitor.png', title: 'Corsair H100i Elite Capellix XT', type: 'Cooling', specification: '240mm AIO, 2x120mm, LCD', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 140, symbol: 'USD', isDefault: 0 }, { value: 3640, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 175, serialNumber: 12001017, isNew: 1, photo: 'monitor.png', title: 'be quiet! Pure Loop 2 FX 360mm', type: 'Cooling', specification: '360mm AIO, ARGB, Modular Design', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 120, symbol: 'USD', isDefault: 0 }, { value: 3120, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 176, serialNumber: 12001018, isNew: 0, photo: 'monitor.png', title: 'ASUS ROG Ryujin III 360', type: 'Cooling', specification: '360mm AIO, 3.5" LCD, 3x120mm', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 250, symbol: 'USD', isDefault: 0 }, { value: 6500, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 177, serialNumber: 12001019, isNew: 1, photo: 'monitor.png', title: 'Thermalright Phantom Spirit 120 SE', type: 'Cooling', specification: 'Single Tower, 120mm, Budget Pick', guarantee: { start: '2024-12-01 10:00:00', end: '2030-12-01 10:00:00' }, price: [{ value: 35, symbol: 'USD', isDefault: 0 }, { value: 910, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 178, serialNumber: 12001020, isNew: 1, photo: 'monitor.png', title: 'DeepCool LS720 Zero Dark', type: 'Cooling', specification: '360mm AIO, Black Edition, 3x120mm', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 100, symbol: 'USD', isDefault: 0 }, { value: 2600, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 179, serialNumber: 12001021, isNew: 0, photo: 'monitor.png', title: 'Alphacool Eisbaer Aurora 360', type: 'Cooling', specification: '360mm AIO, Expandable, Dual Chamber', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 160, symbol: 'USD', isDefault: 0 }, { value: 4160, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+  { id: 180, serialNumber: 12001022, isNew: 1, photo: 'monitor.png', title: 'SilverStone Hydrogon D360-ARGB', type: 'Cooling', specification: '360mm AIO, 3x120mm ARGB', guarantee: { start: '2024-12-01 10:00:00', end: '2027-12-01 10:00:00' }, price: [{ value: 90, symbol: 'USD', isDefault: 0 }, { value: 2340, symbol: 'UAH', isDefault: 1 }], orderId: 12, status: 'free', date: '2024-12-01 10:00:00' },
+
+  // Order 13 - Case (19 products)
+  { id: 181, serialNumber: 13001001, isNew: 1, photo: 'monitor.png', title: 'Lian Li O11 Dynamic EVO XL', type: 'Case', specification: 'Full Tower, Dual Chamber, E-ATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 182, serialNumber: 13001002, isNew: 1, photo: 'monitor.png', title: 'Fractal Design Torrent Compact', type: 'Case', specification: 'Mid Tower, High Airflow, ATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 140, symbol: 'USD', isDefault: 0 }, { value: 3640, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 183, serialNumber: 13001003, isNew: 0, photo: 'monitor.png', title: 'Corsair 7000D Airflow', type: 'Case', specification: 'Full Tower, ATX, Premium Build', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 230, symbol: 'USD', isDefault: 0 }, { value: 5980, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'repair', date: '2025-01-10 09:00:00' },
+  { id: 184, serialNumber: 13001004, isNew: 1, photo: 'monitor.png', title: 'Phanteks Enthoo Pro 2 Server', type: 'Case', specification: 'Full Tower, Dual System, EATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 260, symbol: 'USD', isDefault: 0 }, { value: 6760, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 185, serialNumber: 13001005, isNew: 1, photo: 'monitor.png', title: 'be quiet! Dark Base Pro 901', type: 'Case', specification: 'Full Tower, Modular, E-ATX, ARGB', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 290, symbol: 'USD', isDefault: 0 }, { value: 7540, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 186, serialNumber: 13001006, isNew: 0, photo: 'monitor.png', title: 'NZXT H9 Flow', type: 'Case', specification: 'Mid Tower, Dual Chamber, ATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 160, symbol: 'USD', isDefault: 0 }, { value: 4160, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 187, serialNumber: 13001007, isNew: 1, photo: 'monitor.png', title: 'Thermaltake Tower 900', type: 'Case', specification: 'Super Tower, Vertical GPU, E-ATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 350, symbol: 'USD', isDefault: 0 }, { value: 9100, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 188, serialNumber: 13001008, isNew: 1, photo: 'monitor.png', title: 'Cooler Master HAF 700 EVO', type: 'Case', specification: 'Full Tower, 200mm ARGB Fan, E-ATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 280, symbol: 'USD', isDefault: 0 }, { value: 7280, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'repair', date: '2025-01-10 09:00:00' },
+  { id: 189, serialNumber: 13001009, isNew: 0, photo: 'monitor.png', title: 'Hyte Y70 Touch', type: 'Case', specification: 'Mid Tower, 14" Touchscreen, ATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 400, symbol: 'USD', isDefault: 0 }, { value: 10400, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 190, serialNumber: 13001010, isNew: 1, photo: 'monitor.png', title: 'Fractal Design Define 7 XL', type: 'Case', specification: 'Full Tower, Sound Dampened, E-ATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 191, serialNumber: 13001011, isNew: 1, photo: 'monitor.png', title: 'Lian Li PC-O11 Dynamic Mini', type: 'Case', specification: 'Mid Tower, Tempered Glass, mATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 120, symbol: 'USD', isDefault: 0 }, { value: 3120, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 192, serialNumber: 13001012, isNew: 0, photo: 'monitor.png', title: 'Silverstone RAVEN RVX01', type: 'Case', specification: 'Full Tower, 90° Rotated Layout', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 180, symbol: 'USD', isDefault: 0 }, { value: 4680, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 193, serialNumber: 13001013, isNew: 1, photo: 'monitor.png', title: 'Corsair iCUE 5000T RGB', type: 'Case', specification: 'Mid Tower, 200mm ARGB Fans, ATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 300, symbol: 'USD', isDefault: 0 }, { value: 7800, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 194, serialNumber: 13001014, isNew: 1, photo: 'monitor.png', title: 'Asus Prime AP201 Mesh', type: 'Case', specification: 'Mid Tower, Mesh Panel, mATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 80, symbol: 'USD', isDefault: 0 }, { value: 2080, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 195, serialNumber: 13001015, isNew: 0, photo: 'monitor.png', title: 'NZXT H510 Flow', type: 'Case', specification: 'Mid Tower, Perforated Front, ATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 90, symbol: 'USD', isDefault: 0 }, { value: 2340, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'repair', date: '2025-01-10 09:00:00' },
+  { id: 196, serialNumber: 13001016, isNew: 1, photo: 'monitor.png', title: 'Fractal Design Pop XL Air', type: 'Case', specification: 'Full Tower, High Airflow, ATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 130, symbol: 'USD', isDefault: 0 }, { value: 3380, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 197, serialNumber: 13001017, isNew: 1, photo: 'monitor.png', title: 'InWin 925 Plus', type: 'Case', specification: 'Full Tower, Aluminum, Premium', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 500, symbol: 'USD', isDefault: 0 }, { value: 13000, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 198, serialNumber: 13001018, isNew: 0, photo: 'monitor.png', title: 'Cougar Panzer Max G', type: 'Case', specification: 'Full Tower, Tempered Glass, E-ATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 150, symbol: 'USD', isDefault: 0 }, { value: 3900, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+  { id: 199, serialNumber: 13001019, isNew: 1, photo: 'monitor.png', title: 'Deepcool CH560 Mesh Digital', type: 'Case', specification: 'Mid Tower, LCD Panel, Mesh, ATX', guarantee: { start: '2025-01-10 09:00:00', end: '2028-01-10 09:00:00' }, price: [{ value: 110, symbol: 'USD', isDefault: 0 }, { value: 2860, symbol: 'UAH', isDefault: 1 }], orderId: 13, status: 'free', date: '2025-01-10 09:00:00' },
+
+  // Order 14 - Webcam & Capture (13 products)
+  { id: 200, serialNumber: 14001001, isNew: 1, photo: 'monitor.png', title: 'Logitech Brio 4K Pro', type: 'Webcam', specification: '4K, 90fps, HDR, Windows Hello', guarantee: { start: '2025-02-14 11:00:00', end: '2027-02-14 11:00:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 14, status: 'free', date: '2025-02-14 11:00:00' },
+  { id: 201, serialNumber: 14001002, isNew: 1, photo: 'monitor.png', title: 'Razer Kiyo Pro Ultra', type: 'Webcam', specification: '4K, 60fps, Sony IMX sensor', guarantee: { start: '2025-02-14 11:00:00', end: '2027-02-14 11:00:00' }, price: [{ value: 300, symbol: 'USD', isDefault: 0 }, { value: 7800, symbol: 'UAH', isDefault: 1 }], orderId: 14, status: 'free', date: '2025-02-14 11:00:00' },
+  { id: 202, serialNumber: 14001003, isNew: 0, photo: 'monitor.png', title: 'Elgato Facecam Pro', type: 'Webcam', specification: '4K, 60fps, Sony STARVIS 2', guarantee: { start: '2025-02-14 11:00:00', end: '2027-02-14 11:00:00' }, price: [{ value: 280, symbol: 'USD', isDefault: 0 }, { value: 7280, symbol: 'UAH', isDefault: 1 }], orderId: 14, status: 'free', date: '2025-02-14 11:00:00' },
+  { id: 203, serialNumber: 14001004, isNew: 1, photo: 'monitor.png', title: 'AVerMedia Live Streamer CAM 570', type: 'Webcam', specification: '4K, 60fps, AI Framing', guarantee: { start: '2025-02-14 11:00:00', end: '2027-02-14 11:00:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 14, status: 'repair', date: '2025-02-14 11:00:00' },
+  { id: 204, serialNumber: 14001005, isNew: 1, photo: 'monitor.png', title: 'Insta360 Link 2', type: 'Webcam', specification: '4K, AI Tracking, PTZ', guarantee: { start: '2025-02-14 11:00:00', end: '2027-02-14 11:00:00' }, price: [{ value: 300, symbol: 'USD', isDefault: 0 }, { value: 7800, symbol: 'UAH', isDefault: 1 }], orderId: 14, status: 'free', date: '2025-02-14 11:00:00' },
+  { id: 205, serialNumber: 14001006, isNew: 0, photo: 'monitor.png', title: 'Elgato 4K X Capture Card', type: 'Webcam', specification: '4K60 HDR, PCIe, Passthrough', guarantee: { start: '2025-02-14 11:00:00', end: '2027-02-14 11:00:00' }, price: [{ value: 150, symbol: 'USD', isDefault: 0 }, { value: 3900, symbol: 'UAH', isDefault: 1 }], orderId: 14, status: 'free', date: '2025-02-14 11:00:00' },
+  { id: 206, serialNumber: 14001007, isNew: 1, photo: 'monitor.png', title: 'AVerMedia Live Gamer 4K 2', type: 'Webcam', specification: '4K144 HDR, PCIe, Zero Latency', guarantee: { start: '2025-02-14 11:00:00', end: '2027-02-14 11:00:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 14, status: 'free', date: '2025-02-14 11:00:00' },
+  { id: 207, serialNumber: 14001008, isNew: 1, photo: 'monitor.png', title: 'Logitech MX Brio', type: 'Webcam', specification: '4K, 90fps, Show Mode', guarantee: { start: '2025-02-14 11:00:00', end: '2027-02-14 11:00:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 14, status: 'free', date: '2025-02-14 11:00:00' },
+  { id: 208, serialNumber: 14001009, isNew: 0, photo: 'monitor.png', title: 'Dell UltraSharp WB7022', type: 'Webcam', specification: '4K, AI Auto-framing, USB-C', guarantee: { start: '2025-02-14 11:00:00', end: '2027-02-14 11:00:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 14, status: 'repair', date: '2025-02-14 11:00:00' },
+  { id: 209, serialNumber: 14001010, isNew: 1, photo: 'monitor.png', title: 'Obsbot Tiny 2', type: 'Webcam', specification: '4K, AI Tracking, Gesture Control', guarantee: { start: '2025-02-14 11:00:00', end: '2027-02-14 11:00:00' }, price: [{ value: 250, symbol: 'USD', isDefault: 0 }, { value: 6500, symbol: 'UAH', isDefault: 1 }], orderId: 14, status: 'free', date: '2025-02-14 11:00:00' },
+  { id: 210, serialNumber: 14001011, isNew: 1, photo: 'monitor.png', title: 'Magewell USB Capture HDMI 4K Plus', type: 'Webcam', specification: '4K60, USB 3.0, Pro Grade', guarantee: { start: '2025-02-14 11:00:00', end: '2027-02-14 11:00:00' }, price: [{ value: 400, symbol: 'USD', isDefault: 0 }, { value: 10400, symbol: 'UAH', isDefault: 1 }], orderId: 14, status: 'free', date: '2025-02-14 11:00:00' },
+  { id: 211, serialNumber: 14001012, isNew: 0, photo: 'monitor.png', title: 'Blackmagic Design DeckLink 8K Pro', type: 'Webcam', specification: '8K PCIe Capture, Broadcast', guarantee: { start: '2025-02-14 11:00:00', end: '2027-02-14 11:00:00' }, price: [{ value: 600, symbol: 'USD', isDefault: 0 }, { value: 15600, symbol: 'UAH', isDefault: 1 }], orderId: 14, status: 'free', date: '2025-02-14 11:00:00' },
+  { id: 212, serialNumber: 14001013, isNew: 1, photo: 'monitor.png', title: 'NexiGo N980P', type: 'Webcam', specification: '4K, Dual Mic, Privacy Cover', guarantee: { start: '2025-02-14 11:00:00', end: '2027-02-14 11:00:00' }, price: [{ value: 100, symbol: 'USD', isDefault: 0 }, { value: 2600, symbol: 'UAH', isDefault: 1 }], orderId: 14, status: 'free', date: '2025-02-14 11:00:00' },
+
+  // Order 15 - Microphone (11 products)
+  { id: 213, serialNumber: 15001001, isNew: 1, photo: 'monitor.png', title: 'Shure SM7B', type: 'Microphone', specification: 'Dynamic, Cardioid, XLR', guarantee: { start: '2025-03-20 13:00:00', end: '2028-03-20 13:00:00' }, price: [{ value: 400, symbol: 'USD', isDefault: 0 }, { value: 10400, symbol: 'UAH', isDefault: 1 }], orderId: 15, status: 'free', date: '2025-03-20 13:00:00' },
+  { id: 214, serialNumber: 15001002, isNew: 1, photo: 'monitor.png', title: 'Elgato Wave DX', type: 'Microphone', specification: 'Dynamic, XLR, Broadcaster', guarantee: { start: '2025-03-20 13:00:00', end: '2028-03-20 13:00:00' }, price: [{ value: 150, symbol: 'USD', isDefault: 0 }, { value: 3900, symbol: 'UAH', isDefault: 1 }], orderId: 15, status: 'free', date: '2025-03-20 13:00:00' },
+  { id: 215, serialNumber: 15001003, isNew: 0, photo: 'monitor.png', title: 'Rode NT-USB+', type: 'Microphone', specification: 'Condenser, USB-C, Studio Quality', guarantee: { start: '2025-03-20 13:00:00', end: '2028-03-20 13:00:00' }, price: [{ value: 170, symbol: 'USD', isDefault: 0 }, { value: 4420, symbol: 'UAH', isDefault: 1 }], orderId: 15, status: 'repair', date: '2025-03-20 13:00:00' },
+  { id: 216, serialNumber: 15001004, isNew: 1, photo: 'monitor.png', title: 'Blue Yeti X', type: 'Microphone', specification: 'Condenser, USB, Multi-pattern', guarantee: { start: '2025-03-20 13:00:00', end: '2028-03-20 13:00:00' }, price: [{ value: 130, symbol: 'USD', isDefault: 0 }, { value: 3380, symbol: 'UAH', isDefault: 1 }], orderId: 15, status: 'free', date: '2025-03-20 13:00:00' },
+  { id: 217, serialNumber: 15001005, isNew: 1, photo: 'monitor.png', title: 'HyperX QuadCast S', type: 'Microphone', specification: 'Condenser, USB, RGB, 4 Patterns', guarantee: { start: '2025-03-20 13:00:00', end: '2028-03-20 13:00:00' }, price: [{ value: 160, symbol: 'USD', isDefault: 0 }, { value: 4160, symbol: 'UAH', isDefault: 1 }], orderId: 15, status: 'free', date: '2025-03-20 13:00:00' },
+  { id: 218, serialNumber: 15001006, isNew: 0, photo: 'monitor.png', title: 'Razer Seiren V3 Chroma', type: 'Microphone', specification: 'Dynamic, USB, RGB, Tap-to-mute', guarantee: { start: '2025-03-20 13:00:00', end: '2028-03-20 13:00:00' }, price: [{ value: 100, symbol: 'USD', isDefault: 0 }, { value: 2600, symbol: 'UAH', isDefault: 1 }], orderId: 15, status: 'free', date: '2025-03-20 13:00:00' },
+  { id: 219, serialNumber: 15001007, isNew: 1, photo: 'monitor.png', title: 'Rode PodMic USB', type: 'Microphone', specification: 'Dynamic, USB + XLR, Broadcast', guarantee: { start: '2025-03-20 13:00:00', end: '2028-03-20 13:00:00' }, price: [{ value: 180, symbol: 'USD', isDefault: 0 }, { value: 4680, symbol: 'UAH', isDefault: 1 }], orderId: 15, status: 'free', date: '2025-03-20 13:00:00' },
+  { id: 220, serialNumber: 15001008, isNew: 1, photo: 'monitor.png', title: 'Audio-Technica AT2020USB-XP', type: 'Microphone', specification: 'Condenser, USB-C, 96kHz/24bit', guarantee: { start: '2025-03-20 13:00:00', end: '2028-03-20 13:00:00' }, price: [{ value: 100, symbol: 'USD', isDefault: 0 }, { value: 2600, symbol: 'UAH', isDefault: 1 }], orderId: 15, status: 'repair', date: '2025-03-20 13:00:00' },
+  { id: 221, serialNumber: 15001009, isNew: 0, photo: 'monitor.png', title: 'Logitech Blue Sona', type: 'Microphone', specification: 'Dynamic, XLR, Broadcast Grade', guarantee: { start: '2025-03-20 13:00:00', end: '2028-03-20 13:00:00' }, price: [{ value: 220, symbol: 'USD', isDefault: 0 }, { value: 5720, symbol: 'UAH', isDefault: 1 }], orderId: 15, status: 'free', date: '2025-03-20 13:00:00' },
+  { id: 222, serialNumber: 15001010, isNew: 1, photo: 'monitor.png', title: 'SteelSeries Alias Pro', type: 'Microphone', specification: 'Condenser, XLR, AI Noise Canceling', guarantee: { start: '2025-03-20 13:00:00', end: '2028-03-20 13:00:00' }, price: [{ value: 200, symbol: 'USD', isDefault: 0 }, { value: 5200, symbol: 'UAH', isDefault: 1 }], orderId: 15, status: 'free', date: '2025-03-20 13:00:00' },
+  { id: 223, serialNumber: 15001011, isNew: 1, photo: 'monitor.png', title: 'Neat Bumblebee II', type: 'Microphone', specification: 'Condenser, USB, 24bit/96kHz', guarantee: { start: '2025-03-20 13:00:00', end: '2028-03-20 13:00:00' }, price: [{ value: 100, symbol: 'USD', isDefault: 0 }, { value: 2600, symbol: 'UAH', isDefault: 1 }], orderId: 15, status: 'free', date: '2025-03-20 13:00:00' },
+];
+
+const orders = [
+  { id: 1, title: 'Поставка ігрових моніторів', date: '2024-01-15 10:00:00', description: 'Поставка ігрових моніторів для кіберспортивного клубу', productsCount: 12 },
+  { id: 2, title: 'Закупівля ноутбуків для розробки', date: '2024-02-10 14:30:00', description: 'Закупівля потужних ноутбуків для команди розробки', productsCount: 15 },
+  { id: 3, title: 'Різні моделі ігрових мишей', date: '2024-03-05 09:15:00', description: 'Різні моделі ігрових бездротових мишей', productsCount: 18 },
+  { id: 4, title: 'Клавіатури для офісу та ігор', date: '2024-04-12 11:20:00', description: 'Механічні клавіатури для офісу та геймінгу', productsCount: 13 },
+  { id: 5, title: 'Бездротові гарнітури преміум класу', date: '2024-05-18 16:45:00', description: 'Бездротові гарнітури високого класу', productsCount: 11 },
+  { id: 6, title: 'Процесори Intel та AMD', date: '2024-06-03 10:00:00', description: 'Топові процесори Intel та AMD для збірок', productsCount: 20 },
+  { id: 7, title: 'Відеокарти NVIDIA та AMD', date: '2024-07-20 08:00:00', description: 'Флагманські та середньо-бюджетні GPU', productsCount: 17 },
+  { id: 8, title: 'Оперативна пам\'ять DDR5', date: '2024-08-08 12:00:00', description: 'Модулі DDR5 різних частот та об\'ємів', productsCount: 14 },
+  { id: 9, title: 'NVMe SSD накопичувачі', date: '2024-09-14 09:00:00', description: 'Швидкісні NVMe SSD PCIe 4.0 та 5.0', productsCount: 16 },
+  { id: 10, title: 'Материнські плати Z790 та X670E', date: '2024-10-01 11:00:00', description: 'Материнські плати для нових платформ Intel та AMD', productsCount: 12 },
+  { id: 11, title: 'Блоки живлення 80+', date: '2024-11-05 14:00:00', description: 'Якісні БЖ з сертифікатами Gold/Platinum/Titanium', productsCount: 10 },
+  { id: 12, title: 'Системи охолодження CPU', date: '2024-12-01 10:00:00', description: 'Вежові та рідинні системи охолодження процесорів', productsCount: 22 },
+  { id: 13, title: 'Корпуси для ПК', date: '2025-01-10 09:00:00', description: 'Корпуси різних форм-факторів та цінових категорій', productsCount: 19 },
+  { id: 14, title: 'Вебкамери та карти захоплення', date: '2025-02-14 11:00:00', description: '4K вебкамери та карти захоплення для стрімерів', productsCount: 13 },
+  { id: 15, title: 'Мікрофони для стрімінгу', date: '2025-03-20 13:00:00', description: 'Динамічні та конденсаторні мікрофони для контент-мейкерів', productsCount: 11 },
+];
+
 const db = {
   orders: {
-    getAll: () => orders, getById: (id) => {
+    getAll: () => orders,
+    getById: (id) => {
       const order = orders.find(o => o.id === Number(id));
       if (order) {
         const orderProducts = products.filter(p => p.orderId === order.id);
-        return {...order, products: orderProducts};
+        return { ...order, products: orderProducts };
       }
       return null;
-    }, delete: (id) => {
+    },
+    delete: (id) => {
       const index = orders.findIndex(o => o.id === Number(id));
       if (index !== -1) {
         orders.splice(index, 1);
@@ -541,7 +289,8 @@ const db = {
       }
       return false;
     }
-  }, products: {
+  },
+  products: {
     getAll: () => products,
     getById: (id) => products.find(p => p.id === Number(id)),
     getByOrderId: (orderId) => products.filter(p => p.orderId === Number(orderId)),
@@ -552,4 +301,5 @@ const db = {
     }
   }
 };
+
 module.exports = db;
