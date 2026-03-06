@@ -26,7 +26,7 @@
     - Название прихода
     - Статус продукта
 
-- 🕐 **Header** — отображает текущую дату и время в реальном времени
+- 🕐 **Header** — текущая дата и время в реальном времени
 - 🔌 **WebSocket** — счётчик активных сессий (вкладок) в реальном времени
 - 🎨 **Анимации** — переходы между страницами и компонентами
 
@@ -35,12 +35,11 @@
 ## 🛠 Технологии
 
 | Категория | Технологии |
-|-----------|-----------|
+|-----------|------------|
 | Frontend | React 18, Redux Toolkit, React Router v6 |
 | Стили | SCSS, BEM, Bootstrap 5 |
 | HTTP | Axios |
 | WebSocket | Socket.io |
-| Анимации | CSS Transitions, GSAP |
 | Backend | Node.js, Express |
 | DevOps | Docker, Docker Compose |
 | Deploy | Vercel (frontend), Railway (backend) |
@@ -49,26 +48,28 @@
 
 ## 📁 Структура проекта
 
-
+```
 project/
-├── backend/          # Node.js + Express сервер
-│   ├── data/         # Данные (db.js)
-│   ├── routes/       # API роуты
-│   ├── server.js     # Точка входа
+├── backend/
+│   ├── data/db.js
+│   ├── routes/
+│   │   ├── orders.js
+│   │   └── products.js
+│   ├── server.js
 │   └── Dockerfile
-├── frontend/         # React приложение
+├── frontend/
 │   ├── src/
-│   │   ├── components/   # Переиспользуемые компоненты
-│   │   ├── pages/        # Страницы (Orders, Products)
-│   │   ├── redux/        # Redux слайсы
-│   │   ├── hooks/        # Кастомные хуки
-│   │   └── helpers/      # Утилиты
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── redux/
+│   │   ├── hooks/
+│   │   └── helpers/
 │   ├── Dockerfile
 │   └── nginx.conf
 ├── database/
-│   └── database_schema.sql  # Схема БД для MySQL Workbench
+│   └── database_schema.sql
 └── docker-compose.yml
-
+```
 
 ---
 
@@ -76,13 +77,16 @@ project/
 
 ### Вариант 1 — Docker (рекомендуется)
 
+```bash
 
-# Клонировать репозиторий
-git clone https://github.com/AtremLysuk/frontend.git
-cd frontend
+1.в терминале запустить команду: git clone https://github.com/AtremLysuk/frontend
 
-# Запустить все сервисы
-docker-compose up --build
+2. запустить Docker на вашем пк
+
+3. после клонирования в терминале запустить команду: docker-compose up --build
+
+4. проект будет доступен по адрессу: http://localhost
+
 ```
 
 - Фронт: http://localhost
@@ -97,22 +101,22 @@ docker-compose up --build
 cd backend
 npm install
 node server.js
-# Сервер запустится на http://localhost:3001
-
+```
+Сервер запустится на http://localhost:3001
 
 **Фронтенд** (в новом терминале):
-
+```bash
 cd frontend
 npm install
 npm run dev
-# Приложение запустится на http://localhost:5173
-
+```
+Приложение запустится на http://localhost:5173
 
 ---
 
 ## 🗄 Схема БД
 
-Файл схемы базы данных находится в папке `/database/database_schema.sql`.
+Файл схемы: `/database/database_schema.sql`
 
 Открыть в MySQL Workbench:
 1. Открой MySQL Workbench
@@ -136,6 +140,7 @@ npm run dev
 
 ## 🌿 Git ветвление
 
+```
 master
 └── develop
     ├── feature/backend
@@ -146,3 +151,4 @@ master
     ├── feature/orders-page
     ├── feature/products-page
     └── feature/page-transitions
+```
